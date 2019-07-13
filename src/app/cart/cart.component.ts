@@ -9,14 +9,15 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-	constructor(private CartService: CartService) { }
-	carts: Array<Item>
 
-	onBuy = function () {
-		console.log('Congratulation! Product was bought!');
-	}
-  ngOnInit() {
-		this.carts = this.CartService.getItemsFromCart();
-  }
+ constructor(private CartComponentService: CartService) {}
 
+ carts: Array<Item>;
+
+ onBuy = () => {
+  console.log('Congratulation! Product was bought!');
+ }
+ ngOnInit() {
+  this.carts = this.CartComponentService.getItemsFromCart();
+ }
 }
