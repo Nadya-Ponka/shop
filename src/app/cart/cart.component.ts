@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Item } from './../products/components/product-list-component/item';
 import { CartService } from './cart.service';
@@ -9,15 +9,11 @@ import { CartService } from './cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
- constructor(private CartComponentService: CartService) {}
-
- carts: Array<Item>;
+ constructor() {}
 
  onBuy = () => {
   console.log('Congratulation! Product was bought!');
  }
  ngOnInit() {
-  this.carts = this.CartComponentService.getItemsFromCart();
- }
+}
 }

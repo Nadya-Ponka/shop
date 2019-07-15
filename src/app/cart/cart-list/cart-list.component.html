@@ -1,0 +1,31 @@
+<img alt="Logo" src="../assets/images/cart.png" style="margin-right: 25px;" />
+<div *ngIf="carts.length > 1; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <h4 style="display:inline-block;">Congratulations! You became the owner of {{ carts.length }} beautiful products!</h4>
+  <table class="table">
+    <thead>
+      <tr>
+				<th scope="col">Item</th>
+				<th scope="col">Count</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of carts">
+				<td>{{item.name}}</td>
+				<td>1</td>
+        <td>{{item.price}}</td>
+			</tr>
+			<tr>
+					<th scope="col">Total</th>
+					<th scope="col">{{carts.length}}</th>
+					<th scope="col">Price</th>
+				</tr>	
+    </tbody>
+
+  </table>
+</ng-template>
+<ng-template #elseBlock>
+    <h4 style="display:inline-block;">Your cart is empty. Let's make shopping!</h4>
+</ng-template>
