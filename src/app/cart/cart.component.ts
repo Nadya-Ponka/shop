@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+// Похоже не хватает части функционала. Проект не запускается, так как нет функционала products
 import { Item } from './../products/components/product-list-component/item';
 import { CartService } from './cart.service';
 
