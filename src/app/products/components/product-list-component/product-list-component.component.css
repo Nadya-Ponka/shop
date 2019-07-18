@@ -1,0 +1,8 @@
+.full-justify {
+	display: flex;
+  align-items: center;
+	flex-wrap: wrap;
+	border-bottom: #aa9b77 solid 2px;
+	width: 100vw;
+  justify-content: center;
+}

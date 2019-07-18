@@ -1,31 +1,30 @@
 <img alt="Logo" src="../assets/images/cart.png" style="margin-right: 25px;" />
-<div *ngIf="carts.length > 1; then thenBlock else elseBlock"></div>
+<div *ngIf="carts.length > 0; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
-    <h4 style="display:inline-block;">Congratulations! You became the owner of {{ carts.length }} beautiful products!</h4>
-  <table class="table">
+  <h4 style="display:inline-block;">Congratulations! You will become the owner of {{ carts.length }} beautiful products!</h4>
+  <table class="middle">
     <thead>
       <tr>
-				<th scope="col">Item</th>
-				<th scope="col">Count</th>
-        <th scope="col">Price</th>
+        <th scope="col">Item</th>
+				<th scope="col">Move from Cart</th>
+        <th scope="col">Count</th>
+				<th scope="col">Price</th>
       </tr>
     </thead>
     <tbody>
-
-      <tr *ngFor="let item of carts">
-				<td>{{item.name}}</td>
-				<td>1</td>
-        <td>{{item.price}}</td>
-			</tr>
-			<tr>
-					<th scope="col">Total</th>
-					<th scope="col">{{carts.length}}</th>
-					<th scope="col">Price</th>
-				</tr>	
+			<tr *ngFor="let item of carts" style="width: 100%; border-bottom: solid .5px #d2dae2;" appHighlight="beige">
+				<app-cart [cart]="item" (remove)="removeItem($event)" style="display:contents;"></app-cart>
+      </tr>
+      <tr>
+        <th style="padding: 0 10px;" scope="col">Total</th>
+        <th style="padding: 0 20px;" scope="col">—</th>
+        <th style="padding: 0 10px;" scope="col">{{carts.length}}</th>
+        <th style="padding: 0 10px;" scope="col">{{totalPrice | number:'1.2'}}</th>
+      </tr>
     </tbody>
-
-  </table>
+	</table>
+	<button class="btn btn-primary" style="margin: 20px 5% 50px;float:right;">Сonfirm purchase</button>
 </ng-template>
 <ng-template #elseBlock>
-    <h4 style="display:inline-block;">Your cart is empty. Let's make shopping!</h4>
+  <h4 style="display:inline-block;">Your cart is empty. Let's make shopping!</h4>
 </ng-template>

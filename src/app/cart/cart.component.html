@@ -1,12 +1,4 @@
-<img alt="Logo" src="../assets/images/cart.png" style="margin-right: 25px;" />
-<div *ngIf="carts.length > 1; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>
-  <div>
-    <h2>Congratulations! You became the owner of {{ carts.length }} beautiful products!</h2>
-  </div>
-</ng-template>
-<ng-template #elseBlock>
-  <div>
-    <h2>Your cart is empty. Let's make shopping!</h2>
-  </div>
-</ng-template>
+	<td>{{cart.name}}</td>
+	<td (click)="removeItem(cart)"><img src="./../../assets/images/images.png" style="cursor:pointer;" alt="delete item"/></td>
+	<td>1</td>
+	<td>{{cart.price}}</td>

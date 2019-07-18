@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { Item } from './../products/components/product-list-component/item';
 
@@ -7,14 +8,30 @@ import { Item } from './../products/components/product-list-component/item';
 })
 
 export class CartService {
-
  constructor() { }
+ public carts: Array<Item> = [];
+ private channel = new Subject<any>();
+ public channel$ = this.channel.asObservable();
 
- getItemsFromCart(): Array<Item> {
-  return [
-   new Item( 6, ['s', 'm', 'l'], ['green', 'red', 'pink'], 't-shirt', 'T-shirt', 5, 'children', 1 ),
-   new Item( 7, ['m', 'l'], ['violet', 'pink'], 't-shirt', 'T-shirt', 7.65, 'men', 1 ),
-   new Item( 8, ['s', 'm', 'l'], ['green', 'red', 'yellow'], 'pants', 'pants', 6, 'men', 1),
-  ];
-  }
+ private counter = 0;
+
+ public getTotalPrice = () => {
+  const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
+  const init = this.carts.reduce(reducer, 0);
+  console.log('INIT: ', init);
+  return init;
+ }
+
+ pushItem(item): void {
+  const copyItem = JSON.parse(JSON.stringify(item));
+  copyItem.id += (this.carts.length + this.counter);
+  this.counter += 1;
+  this.carts.push(copyItem);
+  this.channel.next(this.carts);
+ }
+
+ pushCarts = (array) => {
+  this.carts = null;
+  this.carts = array;
+ }
 }
