@@ -1,5 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
+// Похоже не хватает части функционала. Проект не запускается, так как нет функционала products
 import { Item } from './../products/components/product-list-component/item';
 
 @Component({
