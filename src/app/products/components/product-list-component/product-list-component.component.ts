@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  AfterViewInit
+} from '@angular/core';
 
 import { Item } from './../../components/product-list-component/item';
 import { ProductsServiceService } from './../../services/products-service.service';
@@ -10,24 +16,27 @@ import { CartService } from './../../../cart/cart.service';
   styleUrls: ['./product-list-component.component.css']
 })
 export class ProductListComponentComponent implements OnInit, AfterViewInit {
- constructor(private ProductsService: ProductsServiceService, private cartService: CartService) { }
+  constructor(
+    private ProductsService: ProductsServiceService,
+    private cartService: CartService
+  ) {}
 
- @Output() buyProduct: EventEmitter<Item> = new EventEmitter();
+  @Output() buyProduct: EventEmitter<Item> = new EventEmitter();
 
- items: Array<Item>;
+  items: Array<Item>;
 
- onBuy = ($event) => {
-  console.log('Пришел товар из дочернего компонента: ', $event);
-  this.buyProduct.emit($event);
-  this.cartService.pushItem($event);
- }
- ngOnInit() {
-  this.items = this.ProductsService.getProducts();
- }
+  //  Не стоит использовать стрелочные функции в качестве методов
+  onBuy($event: any) {
+    console.log('Пришел товар из дочернего компонента: ', $event);
+    this.buyProduct.emit($event);
+    this.cartService.pushItem($event);
+  };
+  ngOnInit() {
+    this.items = this.ProductsService.getProducts();
+  }
 
- transferTitle = () => {
-  return 'Made by Nadya Ponkratova';
- }
- ngAfterViewInit() {
- }
+  transferTitle = () => {
+    return 'Made by Nadya Ponkratova';
+  };
+  ngAfterViewInit() {}
 }

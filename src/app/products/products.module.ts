@@ -10,7 +10,7 @@ import { ProductListComponentComponent } from './components/product-list-compone
   ProductListComponentComponent
  ],
  exports: [
-  ProductComponent,
+  // ProductComponent, компонент может быть приватным, не используется в других модулях
   ProductListComponentComponent
  ],
  imports: [

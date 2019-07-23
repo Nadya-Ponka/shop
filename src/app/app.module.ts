@@ -3,27 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductComponent } from './products/components/product/product.component';
-import { ProductListComponentComponent } from './products/components/product-list-component/product-list-component.component';
-import { ProductsServiceService } from './products/services/products-service.service';
-import { CartListComponent } from './cart/cart-list/cart-list.component';
-import { CartComponent } from './cart/cart.component';
 import { HighlightDirective } from './shared/highlight.directive';
+import { ProductsModule } from './products/products.module';
+import { CartModule } from './cart/cart.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
  declarations: [
   AppComponent,
-  ProductComponent,
-  ProductListComponentComponent,
-  CartListComponent,
-  CartComponent,
-  HighlightDirective
+  // Компоненты ведь от сюда должны быть убраны, если они добавлены в другие модули
+  // ProductComponent,
+  // ProductListComponentComponent,
+  // CartListComponent,
+  // CartComponent,
+  // HighlightDirective
  ],
  imports: [
   BrowserModule,
+  // Должны быть добавлены модули
+  ProductsModule,
+  CartModule,
+  CoreModule,
+  SharedModule,
+  OrdersModule,
   AppRoutingModule
  ],
- providers: [ProductsServiceService],
+//  Сервис уже зарегистрирован через свой декоратор
+//  providers: [ProductsServiceService],
  bootstrap: [AppComponent]
 })
 

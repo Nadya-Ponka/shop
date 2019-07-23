@@ -9,6 +9,7 @@ import { Item } from './../products/components/product-list-component/item';
 
 export class CartService {
  constructor() { }
+//  старайтесь публичные и приватные поля не перемешивать
  public carts: Array<Item> = [];
  private channel = new Subject<any>();
  public channel$ = this.channel.asObservable();
@@ -22,6 +23,7 @@ export class CartService {
   return init;
  }
 
+//  нет типа для параметра?
  pushItem(item): void {
   const copyItem = JSON.parse(JSON.stringify(item));
   copyItem.id += (this.carts.length + this.counter);

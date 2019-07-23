@@ -11,7 +11,7 @@ import { CartComponent } from './cart.component';
  ],
  exports: [
   CartListComponent,
-  CartComponent
+  CartComponent // этот компонент приватный
  ]
 })
 export class CartModule { }
