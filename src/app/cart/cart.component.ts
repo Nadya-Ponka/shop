@@ -1,3 +1,11 @@
+// Почему-то этот компонент без папки, лежит в корне cart, хотя используется в cart-list
+// такая структура удобнее
+// cart
+//   components
+//     cart-list
+//     cart
+//   services
+//     cart.service
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 import { Item } from './../products/components/product-list-component/item';

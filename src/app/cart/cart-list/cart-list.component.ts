@@ -13,12 +13,13 @@ export class CartListComponent implements OnInit, OnDestroy {
  private sub: Subscription;
  carts: Array<any> = [];
 
- public totalPrice;
+ public totalPrice; // any?
 
  onBuy = () => {
   console.log('Congratulation! Product was bought!');
  }
 
+//  item: any?
  removeItem = (item) => {
   console.log('Need to remove: ', item);
   for ( let i = 0; i < this.carts.length; i++ ) {
@@ -42,4 +43,5 @@ export class CartListComponent implements OnInit, OnDestroy {
  ngOnDestroy() {
   this.sub.unsubscribe();
  }
+//  Посмотрите пункт 12.2 первого домашнего задания
 }
