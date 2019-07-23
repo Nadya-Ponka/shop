@@ -1,6 +1,14 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnInit,
+  EventEmitter
+} from '@angular/core';
 
-import { Item } from './../products/components/product-list-component/item';
+import {
+  Item
+} from '../shared/models/item';
 
 @Component({
   selector: 'app-cart',
@@ -8,14 +16,22 @@ import { Item } from './../products/components/product-list-component/item';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
- constructor() {}
- @Input() cart: Item;
- @Output() remove: EventEmitter<Item> = new EventEmitter();
+  constructor() {}
+  @Input() cart: Item;
+  @Output() increment: EventEmitter < Item > = new EventEmitter();
+  @Output() decrement: EventEmitter < Item > = new EventEmitter();
+  @Output() remove: EventEmitter < Item > = new EventEmitter();
 
- removeItem = (item) => {
-  console.log('Remove item from cart: ', item);
-  this.remove.emit(item);
- }
- ngOnInit() {
- }
+  removeItem(item: Item) {
+    this.remove.emit(item);
+  }
+
+  incrementCount(item: Item) {
+    this.increment.emit(item);
+  }
+  decrementCount(item: Item) {
+    this.decrement.emit(item);
+  }
+
+  ngOnInit() {}
 }

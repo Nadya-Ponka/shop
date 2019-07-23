@@ -2,3 +2,35 @@ td {
 	width: 25%;
 	padding: 0 10px;
 }
+
+.quantity-wrapper {
+	display:flex;
+	width: 100px;
+	padding: 5px 0;
+}
+.quantity-wrapper .plus-minus {
+	width: 20px;
+	height: 20px;
+	background-color: #0070d4;
+	border-radius: 50%;
+	color: #ffffff;
+	font-weight: bold;
+	line-height: 20px;
+	font-size: 18px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.quantity-wrapper .quantity {
+	vertical-align: center;
+	display: inline-block;
+	width: 40px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid transparent;
+	outline: none;
+	text-align: center;
+	padding: 0 5px;
+}

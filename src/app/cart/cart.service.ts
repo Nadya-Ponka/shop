@@ -1,37 +1,106 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import {
+  Injectable,
+  OnInit
+} from '@angular/core';
+import {
+  Subject
+} from 'rxjs';
 
-import { Item } from './../products/components/product-list-component/item';
+import {
+  Item
+} from '../shared/models/item';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CartService {
- constructor() { }
- public carts: Array<Item> = [];
- private channel = new Subject<any>();
- public channel$ = this.channel.asObservable();
+  constructor() {}
 
- private counter = 0;
+  private channel = new Subject < any > ();
+  public channel$ = this.channel.asObservable();
 
- public getTotalPrice = () => {
-  const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
-  const init = this.carts.reduce(reducer, 0);
-  console.log('INIT: ', init);
+  public arrayItems = [];
+
+  getTotalPrice() {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue.elem.price * currentValue.count;
+    const init = this.arrayItems.reduce(reducer, 0);
+    return init;
+  }
+
+  getTotalCount() {
+  const reducer = (accumulator: number, currentValue) => accumulator + currentValue.count;
+  const init = this.arrayItems.reduce(reducer, 0);
   return init;
- }
+  }
 
- pushItem(item): void {
-  const copyItem = JSON.parse(JSON.stringify(item));
-  copyItem.id += (this.carts.length + this.counter);
-  this.counter += 1;
-  this.carts.push(copyItem);
-  this.channel.next(this.carts);
- }
+  pushItem(item: Item): void {
+    if (this.arrayItems && this.arrayItems.length > 0) {
+      let elementWasFound = false;
+      this.arrayItems.forEach(el => {
+        if (el.elem.id === item.id) {
+          el.count += 1;
+          elementWasFound = true;
+        }
+      });
+      if (!elementWasFound) {
+        this.arrayItems.push({
+          count: 1,
+          elem: item
+        });
+      }
+    } else {
+      this.arrayItems.push({
+        count: 1,
+        elem: item
+      });
+    }
+    this.channel.next(this.arrayItems);
+  }
 
- pushCarts = (array) => {
-  this.carts = null;
-  this.carts = array;
- }
+  emptyCart() {
+    this.arrayItems = [];
+    this.channel.next(this.arrayItems);
+  }
+  pushCarts(array) {
+    this.arrayItems = null;
+    this.arrayItems = array;
+  }
+
+  removeItem(item: {
+    elem: Item,
+    count: number
+  }) {
+    for (let i = 0; i < this.arrayItems.length; i++) {
+      if (this.arrayItems[i].elem.id === item.elem.id) {
+        this.arrayItems.splice(i, 1);
+      }
+    }
+  }
+
+  incrementCount(item: {
+    elem: Item,
+    count: number
+  }) {
+    for (let i = 0; i < this.arrayItems.length; i++) {
+      if (this.arrayItems[i].elem.id === item.elem.id) {
+        this.arrayItems[i].count += 1;
+      }
+    }
+  }
+
+  decrementCount(item: {
+    elem: Item,
+    count: number
+  }) {
+    for (let i = 0; i < this.arrayItems.length; i++) {
+      if (this.arrayItems[i].elem.id === item.elem.id) {
+        if (this.arrayItems[i].count > 1) {
+          this.arrayItems[i].count -= 1;
+        } else {
+          this.arrayItems.splice(i, 1);
+        }
+      }
+    }
+  }
 }

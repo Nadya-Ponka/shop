@@ -1,7 +1,18 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  OnDestroy
+} from '@angular/core';
+import {
+  Subscription
+} from 'rxjs';
 
-import { CartService } from './../cart.service';
+import {
+  CartService
+} from './../cart.service';
+import {
+  Item
+} from '../../shared/models/item';
 
 @Component({
   selector: 'app-cart-list',
@@ -9,37 +20,64 @@ import { CartService } from './../cart.service';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit, OnDestroy {
- constructor(private CartComponentService: CartService) { }
- private sub: Subscription;
- carts: Array<any> = [];
+  constructor(private CartComponentService: CartService) {}
+  private sub: Subscription;
+  arrayItems: Array < any > = [];
 
- public totalPrice;
-
- onBuy = () => {
-  console.log('Congratulation! Product was bought!');
- }
-
- removeItem = (item) => {
-  console.log('Need to remove: ', item);
-  for ( let i = 0; i < this.carts.length; i++ ) {
-   if (this.carts[i].id === item.id) {
-    this.carts.splice(i, 1);
-    break;
+  public totalPrice: number;
+  public totalCount: number;
+  /*  onBuy = () => {
+    console.log('Congratulation! Product was bought!');
    }
-  }
-  this.CartComponentService.pushCarts(this.carts);
-  this.totalPrice = this.CartComponentService.getTotalPrice();
- }
-
- ngOnInit() {
-  this.sub = this.CartComponentService.channel$.subscribe(
-   data => {
-    this.carts = data;
+   */
+  removeItem(item: {
+    elem: Item,
+    count: number
+  }) {
+    this.CartComponentService.removeItem(item);
+    this.totalCount = this.CartComponentService.getTotalCount();
     this.totalPrice = this.CartComponentService.getTotalPrice();
-   }
-  );
- }
- ngOnDestroy() {
-  this.sub.unsubscribe();
- }
+  }
+
+  incrementCount(item: {
+    elem: Item,
+    count: number
+  }) {
+    this.CartComponentService.incrementCount(item);
+    this.totalCount = this.CartComponentService.getTotalCount();
+    this.totalPrice = this.CartComponentService.getTotalPrice();
+  }
+  decrementCount(item: {
+    elem: Item,
+    count: number
+  }) {
+    this.CartComponentService.decrementCount(item);
+    this.totalCount = this.CartComponentService.getTotalCount();
+    this.totalPrice = this.CartComponentService.getTotalPrice();
+  }
+
+  inputCount(item: {
+    elem: Item,
+    count: number
+  }) {
+    console.log('Input count: ', item);
+  }
+
+  ngOnInit() {
+    this.sub = this.CartComponentService.channel$.subscribe(
+      data => {
+        this.arrayItems = data;
+        this.totalPrice = this.CartComponentService.getTotalPrice();
+        this.totalCount = this.CartComponentService.getTotalCount();
+      }
+    );
+  }
+
+  public emptyCart() {
+    this.CartComponentService.emptyCart();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

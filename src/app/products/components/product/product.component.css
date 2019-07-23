@@ -9,6 +9,7 @@
 	height: 324px;
 	margin:20px;
 	box-sizing: content-box;
+	border-collapse: separate;
 }
 
 .shop-item:hover {

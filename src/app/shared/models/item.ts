@@ -4,9 +4,8 @@ export enum State {
 }
 
 export class Item {
-
  constructor(
-  public id: number,
+  public id: number = null,
   public size: string[],
   public colors: string[],
   public image: string,
@@ -14,14 +13,5 @@ export class Item {
   public price: number,
   public whose: string,
   public category: State
- ) {
-  this.id = id || null;
-  this.size = size;
-  this.colors = colors;
-  this.image = image;
-  this.name = name;
-  this.price = price,
-  this.whose = whose;
-  this.category = category;
- }
+ ) {}
 }
