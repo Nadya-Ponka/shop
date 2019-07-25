@@ -5,6 +5,7 @@ import { Item } from '../../shared/models/item';
 @Injectable({
   providedIn: 'root'
 })
+// может переименовать в ProductsService
 export class ProductsServiceService {
  constructor() { }
 

@@ -21,6 +21,7 @@ import {
   templateUrl: './product-list-component.component.html',
   styleUrls: ['./product-list-component.component.css']
 })
+// может переименовать в ProductListComponent
 export class ProductListComponentComponent implements OnInit, AfterViewInit {
   constructor(
     private productsService: ProductsServiceService,
