@@ -4,13 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HighlightDirective } from './directives/highlight.directive';
 import { BorderDirective } from './directives/border.directive';
 
+const dirs = [HighlightDirective, BorderDirective];
 @NgModule({
- declarations: [HighlightDirective, BorderDirective],
- imports: [
-  CommonModule
- ],
- exports: [
-  HighlightDirective, BorderDirective
- ]
+  declarations: [...dirs],
+  imports: [CommonModule],
+  exports: [...dirs]
 })
-export class SharedModule { }
+export class SharedModule {}
