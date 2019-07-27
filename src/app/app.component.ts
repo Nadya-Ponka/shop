@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import {ProductListComponentComponent} from './products/components/product-list-component/product-list-component.component';
+import {ProductListComponent} from './products/components/product-list-component/product-list.component';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +10,8 @@ export class AppComponent implements AfterViewInit {
  @ViewChild('appTitle', {static: false})
  title: ElementRef<HTMLElement>;
 
- @ViewChild(ProductListComponentComponent, {static: false})
- child: ProductListComponentComponent;
+ @ViewChild(ProductListComponent, {static: false})
+ child: ProductListComponent;
 
  ngAfterViewInit() {
   this.title.nativeElement.innerHTML = this.child.transferTitle();

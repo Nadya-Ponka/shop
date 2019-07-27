@@ -10,25 +10,25 @@ import {
   Item
 } from '../../../shared/models/item';
 import {
-  ProductsServiceService
-} from './../../services/products-service.service';
+  ProductsService
+} from '../../services/products-service.service';
 import {
   CartService
-} from './../../../cart/cart.service';
+} from '../../../cart/cart.service';
 
 @Component({
-  selector: 'app-product-list-component',
-  templateUrl: './product-list-component.component.html',
-  styleUrls: ['./product-list-component.component.css']
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponentComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit, AfterViewInit {
   constructor(
-    private productsService: ProductsServiceService,
+    private productsService: ProductsService,
     private cartService: CartService) {}
 
   @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
 
-  items: Array < Item > ;
+  items;
 
   onBuy($event) {
     this.buyProduct.emit($event);

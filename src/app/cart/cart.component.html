@@ -1,10 +1,10 @@
-	<td>{{cart.elem.name}}</td>
+	<td>{{cart.elem.name | titlecase }}</td>
 	<td (click)="removeItem(cart)"><img src="./../../assets/images/images.png" style="cursor:pointer;" alt="delete item" />
 	</td>
 	<td class="quantity-wrapper">
 	    <a class="plus-minus minus" (click)="decrementCount(cart)">-</a>
 			<span class="quantity">{{cart.count}}</span>
-<!-- 			<input class="quantity" type="text"  (quantity)="onNameChange($event)" value="{{cart.count}}">
- -->	    <a class="plus-minus plus" (click)="incrementCount(cart)">+</a>
+	    <a class="plus-minus plus" (click)="incrementCount(cart)">+</a>
 	</td>
-	<td>{{cart.elem.price * cart.count | number:'1.2'}}</td>
+	<td>{{cart.elem.price | currency:'EUR'}}</td>
+	<td>{{cart.elem.price * cart.count | currency:'EUR'}}</td>

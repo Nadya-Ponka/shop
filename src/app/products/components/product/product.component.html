@@ -23,7 +23,7 @@
 		</tr>
 		<tr>
 			<td class="product-name">{{ item.name | uppercase }}</td>
-			<td class="right">{{ item.price | number:'1.2'}}€</td>
+			<td class="right">{{ item.price | currency:'EUR'}}</td>
 		</tr>
 		<button class="btn btn-primary" (click)='onBuy(item)' [disabled]="item.category" style="margin: 0 10px 10px;">BUY</button>
 	</table>

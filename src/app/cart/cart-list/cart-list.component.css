@@ -7,3 +7,12 @@
 table {
 	border: solid 4px transparent;
 }
+
+select {
+	width:115px;
+	margin-right: 20px;
+}
+
+th, td {
+	width: 15%;
+}

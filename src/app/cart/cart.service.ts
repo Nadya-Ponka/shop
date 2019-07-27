@@ -1,14 +1,7 @@
-import {
-  Injectable,
-  OnInit
-} from '@angular/core';
-import {
-  Subject
-} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import {
-  Item
-} from '../shared/models/item';
+import { Item } from '../shared/models/item';
 
 @Injectable({
   providedIn: 'root'
@@ -61,16 +54,14 @@ export class CartService {
   emptyCart() {
     this.arrayItems = [];
     this.channel.next(this.arrayItems);
-  }
-  pushCarts(array) {
+	}
+	
+  pushCarts(array: Item[]) {
     this.arrayItems = null;
     this.arrayItems = array;
   }
 
-  removeItem(item: {
-    elem: Item,
-    count: number
-  }) {
+  removeItem(item: { elem: Item, count: number }) {
     for (let i = 0; i < this.arrayItems.length; i++) {
       if (this.arrayItems[i].elem.id === item.elem.id) {
         this.arrayItems.splice(i, 1);
@@ -78,10 +69,7 @@ export class CartService {
     }
   }
 
-  incrementCount(item: {
-    elem: Item,
-    count: number
-  }) {
+  incrementCount(item: { elem: Item, count: number }) {
     for (let i = 0; i < this.arrayItems.length; i++) {
       if (this.arrayItems[i].elem.id === item.elem.id) {
         this.arrayItems[i].count += 1;
@@ -89,10 +77,7 @@ export class CartService {
     }
   }
 
-  decrementCount(item: {
-    elem: Item,
-    count: number
-  }) {
+  decrementCount(item: { elem: Item, count: number }) {
     for (let i = 0; i < this.arrayItems.length; i++) {
       if (this.arrayItems[i].elem.id === item.elem.id) {
         if (this.arrayItems[i].count > 1) {
