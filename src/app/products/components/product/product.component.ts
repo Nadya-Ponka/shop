@@ -11,6 +11,7 @@ import { Item } from '../../../shared/models/item';
 export class ProductComponent implements OnInit {
  @Input() item: Item;
  @Output() buyProduct: EventEmitter<Item> = new EventEmitter();
+ @Output() showReviews = new EventEmitter<Item>();
 
  onBuy(item: Item) {
   console.log('Congratulation! Product was bought!', item);
@@ -18,4 +19,10 @@ export class ProductComponent implements OnInit {
  }
 
  ngOnInit() {}
+ 
+ onShowReviews() {
+	 console.log('this.item: ', this.item);
+	this.showReviews.emit(this.item);
+ }
+ 
 }

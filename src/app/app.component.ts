@@ -1,19 +1,11 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import {ProductListComponent} from './products/components/product-list-component/product-list.component';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
- @ViewChild('appTitle', {static: false})
- title: ElementRef<HTMLElement>;
+export class AppComponent {
+ title = 'Made by Nadya Ponkratova';
 
- @ViewChild(ProductListComponent, {static: false})
- child: ProductListComponent;
-
- ngAfterViewInit() {
-  this.title.nativeElement.innerHTML = this.child.transferTitle();
- }
 }

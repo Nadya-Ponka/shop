@@ -1,11 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
-  <img alt="Logo" src="./assets/favicon.png" />
-  <h1 #appTitle></h1> 
+  <img alt="Logo" src="./assets/favicon.png" style="height:50px;cursor:pointer;outline: none;" routerLink="/product-list"/>
+	<h1>{{title}}</h1> 
+	<button routerLink="/cart" style="margin-left: auto;" title="Cart">
+		<img alt="Logo" src="../assets/images/cart.png" style="margin-right:2px;"/>
+	</button>
+	<button routerLink="/admin" style="margin-left: 20px;font-weight: 700;" title="Admin">
+		Admin
+	</button>
 </header>
 <main>
-  <router-outlet></router-outlet>
-	<app-product-list></app-product-list>
-	<app-cart-list></app-cart-list>
+	<router-outlet></router-outlet>
 	<app-about></app-about>
 </main>

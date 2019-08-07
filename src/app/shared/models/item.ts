@@ -12,6 +12,9 @@ export class Item {
   public name: string,
   public price: number,
   public whose: string,
-  public category: State
- ) {}
+	public category: State,
+	public reviews?: string[]
+ ) {
+	this.reviews = reviews || [];
+ }
 }
