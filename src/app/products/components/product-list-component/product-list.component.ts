@@ -21,14 +21,18 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   items: Promise<Array<Item>>;
 
   onBuy($event) {
+    console.log('Product was bought: ', $event, this.cartService);
     this.buyProduct.emit($event);
     this.cartService.pushItem($event);
 	}
 	
 	onShowReviews(product: Item): void {
 		console.log('PRODUCT: ', product);
-		const link = ['/product', product.id];
-    this.router.navigate(link);
+    const link = ['/product', product.id];
+/*  this.router.navigate(link);*/
+this.router.navigate([{ outlets: { review: null }}]);
+
+    this.router.navigate([{ outlets: { review: ['product', product.id] } }]);
 	}
 
   ngOnInit() {

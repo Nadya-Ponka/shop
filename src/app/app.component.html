@@ -1,15 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <header>
-  <img alt="Logo" src="./assets/favicon.png" style="height:50px;cursor:pointer;outline: none;" routerLink="/product-list"/>
-	<h1>{{title}}</h1> 
-	<button routerLink="/cart" style="margin-left: auto;" title="Cart">
-		<img alt="Logo" src="../assets/images/cart.png" style="margin-right:2px;"/>
-	</button>
-	<button routerLink="/admin" style="margin-left: 20px;font-weight: 700;" title="Admin">
-		Admin
-	</button>
+  <img alt="Logo" src="./assets/favicon.png" style="height:50px;cursor:pointer;outline: none;" routerLink="/home" />
+  <h1>{{title}}</h1>
+  <button routerLink="/cart" style="margin-left: auto;" title="Cart">
+    <img alt="Logo" src="../assets/images/cart.png" style="margin-right:2px;" />
+  </button>
+  <button routerLink="/admin" style="margin-left: 20px;font-weight: 700;" title="Admin">
+    Admin
+  </button>
 </header>
 <main>
-	<router-outlet></router-outlet>
-	<app-about></app-about>
+  <div>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-2">
+      <router-outlet name="review"></router-outlet>
+    </div>
+  </div>
+  <div class="col-md-12" style="width: 100%">  <app-about></app-about>
+  </div>
 </main>

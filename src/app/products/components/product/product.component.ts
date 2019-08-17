@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Routes, RouterModule, Router } from '@angular/router';
 
 import { Item } from '../../../shared/models/item';
 
@@ -9,6 +10,7 @@ import { Item } from '../../../shared/models/item';
 })
 
 export class ProductComponent implements OnInit {
+    constructor (private router: Router) {}
  @Input() item: Item;
  @Output() buyProduct: EventEmitter<Item> = new EventEmitter();
  @Output() showReviews = new EventEmitter<Item>();
@@ -22,7 +24,10 @@ export class ProductComponent implements OnInit {
  
  onShowReviews() {
 	 console.log('this.item: ', this.item);
-	this.showReviews.emit(this.item);
+    this.router.navigate([{ outlets: { review: null }}]);
+    setTimeout(() => {
+      this.showReviews.emit(this.item);
+    },100);
  }
  
 }

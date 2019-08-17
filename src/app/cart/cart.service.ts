@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+import { Observable, of, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+
 import { Item } from '../shared/models/item';
 
 @Injectable({
@@ -14,6 +17,8 @@ export class CartService {
   public channel$ = this.channel.asObservable();
 
   public arrayItems = [];
+
+  public userListObservable: Observable<Array<Item>> = of(this.arrayItems);
 
   getTotalPrice() {
     const reducer = (accumulator, currentValue) => accumulator + currentValue.elem.price * currentValue.count;
@@ -88,4 +93,29 @@ export class CartService {
       }
     }
   }
+
+  getUsers(): Observable<Item[]> {
+    return this.userListObservable;
+  }
+
+  getUser(id: number | string): Observable<Item> {
+    return this.getUsers()
+      .pipe(
+        map((users: Array<Item>) => users.find(user => user.id === +id)),
+        catchError(err => throwError('Error in getUser method'))
+      );
+  }
+
+  createUser(user: Item): void {
+    this.arrayItems.push(user);
+  }
+
+  updateUser(user: Item): void {
+    const i = this.arrayItems.findIndex(u => u.id === user.id);
+
+    if (i > -1) {
+      this.arrayItems.splice(i, 1, user);
+    }
+  }
+
 }

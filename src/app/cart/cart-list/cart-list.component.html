@@ -1,46 +1,51 @@
 <div *ngIf="arrayItems.length > 0; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
-	<h4 style="display:inline-block;">Congratulations! You will become the owner of {{ totalCount }} beautiful products!</h4>
-	<div style="margin: 5px 5% 20px 5%;font-weight: 700;">
-			<select class="browser-default custom-select" (click)="printField($event)">
-				<option disabled selected>Sort Items by</option>
-				<option [value]="key" *ngFor="let key of keys">{{ key | titlecase }}</option>
-			</select>
-			<select class="browser-default custom-select" (click)="printFlag($event)">
-				<option disabled selected>Choose order</option>
-				<option>Descending</option>
-				<option>Ascending</option>
-			</select>
-	</div>
-  <table class="middle" appBorder="solid 4px black">
+  <h4 style="display:inline-block;">Congratulations! You will become the owner of {{ totalCount }} beautiful products!
+  </h4>
+  <div style="margin: 5px 5% 20px 5%;font-weight: 700;">
+    <select class="browser-default custom-select" (click)="printField($event)">
+      <option disabled selected>Sort Items by</option>
+      <option [value]="key" *ngFor="let key of keys">{{ key | titlecase }}</option>
+    </select>
+    <select class="browser-default custom-select" (click)="printFlag($event)">
+      <option disabled selected>Choose order</option>
+      <option>Descending</option>
+      <option>Ascending</option>
+    </select>
+  </div>
+  <table class="middle">
+    <!-- appBorder="solid 4px black" -->
     <thead>
       <tr>
         <th>Item</th>
-				<th>Remove from Cart</th>
+        <th>Remove from Cart</th>
         <th style="padding-left: 22px;">Count</th>
-				<th>Price</th>
-				<th>Total Price</th>
+        <th>Price</th>
+        <th>Total Price</th>
       </tr>
     </thead>
     <tbody>
-			<tr *ngFor="let item of arrayItems" style="width: 100%; border-bottom: solid .5px #d2dae2;" appHighlight="beige">
-				<app-cart [cart]="item" (remove)="removeItem($event)" (increment)="incrementCount($event);" (decrement)="decrementCount($event)" style="display:contents;"></app-cart>
+      <tr *ngFor="let item of arrayItems" style="width: 100%; border-bottom: solid .5px #d2dae2; padding-bottom: 5px;" > <!-- appHighlight="beige" -->
+        <app-cart [cart]="item" (remove)="removeItem($event)" (increment)="incrementCount($event);"
+          (decrement)="decrementCount($event)" style="display:contents;" (editItem)="onEditItem($event)"></app-cart>
       </tr>
       <tr>
         <th>Total</th>
         <th></th>
-				<th style="padding-left: 35px;">{{ totalCount }}</th>
-				<th></th>
+        <th style="padding-left: 35px;">{{ totalCount }}</th>
+        <th></th>
         <th>{{ totalPrice | currency:'EUR' }}</th>
       </tr>
     </tbody>
-	</table>
-	<div style="display:flex;margin-left:auto; margin: 20px 5% 50px;float:right;">
-	<button class="btn btn-primary" type="text">Date: {{ date | date:'longDate'}}</button>
-	<button class="btn btn-primary"  (click)="emptyCart()" style="margin-left: 20px;">Empty cart</button>
-	<button class="btn btn-primary" style="margin-left: 20px;">Сonfirm purchase</button>
-	</div>
+  </table>
+  <div style="display:flex;margin-left:auto; margin: 20px 5% 50px;float:right;">
+    <button class="btn btn-primary" type="text">Date: {{ date | date:'longDate'}}</button>
+    <button class="btn btn-primary" (click)="emptyCart()" style="margin-left: 20px;">Empty cart</button>
+    <button class="btn btn-primary" style="margin-left: 20px;">Сonfirm purchase</button>
+  </div>
 </ng-template>
 <ng-template #elseBlock>
   <h4 style="display:inline-block;">Your cart is empty. Let's make shopping!</h4>
 </ng-template>
+
+<router-outlet></router-outlet>

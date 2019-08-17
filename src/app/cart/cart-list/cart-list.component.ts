@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { CartService } from './../cart.service';
 import { Item } from '../../shared/models/item';
@@ -13,10 +14,16 @@ import { OrderByPipe } from './../../shared/pipes/order-by.pipe';
   providers: [OrderByPipe]
 })
 export class CartListComponent implements OnInit, OnDestroy {
-  constructor(private CartComponentService: CartService, private orderByPipe: OrderByPipe) {}
+  constructor(
+    private cartService: CartService, 
+    private orderByPipe: OrderByPipe,
+    private router: Router,
+    private route: ActivatedRoute
+) {
+  }
   public totalPrice: number;
   public totalCount: number;
-	arrayItems: Array < any > = [];
+	arrayItems = [];
 
 	private sub: Subscription;
   private date = Date.now();
@@ -25,25 +32,25 @@ export class CartListComponent implements OnInit, OnDestroy {
   private field = '';
 
   removeItem(item: { elem: Item, count: number }) {
-    this.CartComponentService.removeItem(item);
-    this.totalCount = this.CartComponentService.getTotalCount();
-    this.totalPrice = this.CartComponentService.getTotalPrice();
+    this.cartService.removeItem(item);
+    this.totalCount = this.cartService.getTotalCount();
+    this.totalPrice = this.cartService.getTotalPrice();
   }
 
   incrementCount(item: { elem: Item, count: number }) {
-    this.CartComponentService.incrementCount(item);
-    this.totalCount = this.CartComponentService.getTotalCount();
-    this.totalPrice = this.CartComponentService.getTotalPrice();
+    this.cartService.incrementCount(item);
+    this.totalCount = this.cartService.getTotalCount();
+    this.totalPrice = this.cartService.getTotalPrice();
 	}
 	
   decrementCount(item: { elem: Item, count: number }) {
-    this.CartComponentService.decrementCount(item);
-    this.totalCount = this.CartComponentService.getTotalCount();
-    this.totalPrice = this.CartComponentService.getTotalPrice();
+    this.cartService.decrementCount(item);
+    this.totalCount = this.cartService.getTotalCount();
+    this.totalPrice = this.cartService.getTotalPrice();
   }
 
   emptyCart() {
-    this.CartComponentService.emptyCart();
+    this.cartService.emptyCart();
   }
 
   printField(event: any) {
@@ -57,16 +64,29 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this.CartComponentService.channel$.subscribe(
+    this.arrayItems = this.cartService.arrayItems;
+    this.totalPrice = this.cartService.getTotalPrice();
+    this.totalCount = this.cartService.getTotalCount();
+    
+    /* this.sub = this.cartService.channel$.subscribe(
       data => {
+        console.log('Получили элемент: ', data);
         this.arrayItems = this.orderByPipe.transform(data, this.field, this.flag);
-        this.totalPrice = this.CartComponentService.getTotalPrice();
-        this.totalCount = this.CartComponentService.getTotalCount();
+        this.totalPrice = this.cartService.getTotalPrice();
+        this.totalCount = this.cartService.getTotalCount();
       }
-    );
+    ); */
+  }
+  onEditItem(user: Item) {
+    console.log('FROM LIST COMPONENT: ', user);
+    const link = ['/cart/edit', user.elem.id];
+    this.router.navigate(link);
+    // or
+    // const link = ['edit', user.id];
+    // this.router.navigate(link, {relativeTo: this.route});
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
-  }
+/*     this.sub.unsubscribe();
+ */  }
 }

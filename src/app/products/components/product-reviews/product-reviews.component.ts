@@ -1,10 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router  } from '@angular/router';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  ParamMap,
+  Router
+} from '@angular/router';
 
-import { switchMap } from 'rxjs/operators';
+import {
+  switchMap
+} from 'rxjs/operators';
 
-import { Item } from '../../../shared/models/item';
-import { ProductsService } from '../../services/products-service.service';
+import {
+  Item
+} from '../../../shared/models/item';
+import {
+  ProductsService
+} from '../../services/products-service.service';
 
 @Component({
   templateUrl: './product-reviews.component.html',
@@ -13,22 +26,29 @@ import { ProductsService } from '../../services/products-service.service';
 export class ProductReviewsComponent implements OnInit {
   review: Item;
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private productsService: ProductsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-		this.review = new Item();
-		const id = this.route.snapshot.paramMap.get('productID');
-		console.log('ID: ', id);
-		this.productsService.getProduct(id).then((data) => {this.review = data; console.log('review: ', this.review);});
+    this.review = new Item();
+    const id = this.route.snapshot.paramMap.get('productID');
+    console.log('ID: ', id);
+    this.productsService.getProduct(id).then((data) => {
+      this.review = data;
+      console.log('review: ', this.review);
+    });
 
-/* this.route.paramMap
-      .pipe(
-        switchMap((params: ParamMap) => this.productsService.getProduct(+params.get('productID'))))
-      .subscribe(
-        review => this.review = {...review},
-        err => console.log(err)
-    ); */
-}
+    /* this.route.paramMap
+          .pipe(
+            switchMap((params: ParamMap) => this.productsService.getProduct(+params.get('productID'))))
+          .subscribe(
+            review => this.review = {...review},
+            err => console.log(err)
+        ); */
+  }
 
   onSaveTask() {
     const review = { ...this.review };
@@ -41,6 +61,7 @@ export class ProductReviewsComponent implements OnInit {
   }
 
   onGoBack(): void {
-		this.router.navigate(['/home']);
-	}
+    this.router.navigate([{ outlets: { review: null }
+    }]);
+  }
 }

@@ -5,7 +5,7 @@ export enum State {
 
 export class Item {
  constructor(
-  public id: number = null,
+  public id: number,
   public size: string[],
   public colors: string[],
   public image: string,
