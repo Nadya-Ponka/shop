@@ -1,11 +1,2 @@
-	<td>{{cart.elem.name | titlecase }}</td>
-	<td (click)="removeItem(cart)"><img src="./../../assets/images/images.png" style="cursor:pointer;" alt="delete item" />
-	</td>
-	<td class="quantity-wrapper">
-	    <a class="plus-minus minus" (click)="decrementCount(cart)">-</a>
-			<span class="quantity">{{cart.count}}</span>
-	    <a class="plus-minus plus" (click)="incrementCount(cart)">+</a>
-	</td>
-	<td>{{cart.elem.price | currency:'EUR'}}</td>
-	<td>{{cart.elem.price * cart.count | currency:'EUR'}}</td>
-	<td><button class="btn btn-secondary" style="line-height:1;" (click)="onEditTtem()">EDIT</button></td>
+
+<router-outlet></router-outlet>

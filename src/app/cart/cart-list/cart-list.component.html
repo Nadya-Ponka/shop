@@ -26,8 +26,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of arrayItems" style="width: 100%; border-bottom: solid .5px #d2dae2; padding-bottom: 5px;" > <!-- appHighlight="beige" -->
-        <app-cart [cart]="item" (remove)="removeItem($event)" (increment)="incrementCount($event);"
-          (decrement)="decrementCount($event)" style="display:contents;" (editItem)="onEditItem($event)"></app-cart>
+        <app-cart-element [cart]="item" (remove)="removeItem($event)" (increment)="incrementCount($event);"
+          (decrement)="decrementCount($event)" style="display:contents;" (editItem)="onEditItem($event)"></app-cart-element>
       </tr>
       <tr>
         <th>Total</th>
@@ -48,4 +48,3 @@
   <h4 style="display:inline-block;">Your cart is empty. Let's make shopping!</h4>
 </ng-template>
 
-<router-outlet></router-outlet>

@@ -8,7 +8,7 @@ import { CartFormComponent } from './cart-form/cart-form.component';
 const routes: Routes = [
     {
         path: 'cart',
-        component: CartListComponent,
+        component: CartComponent,
         children: [
           {
             path: 'edit/:userID',

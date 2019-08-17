@@ -36,6 +36,8 @@ export class CartFormComponent implements OnInit, OnDestroy {
     this.sub = this.cartService.getUser(id)
       .subscribe(
         user => {
+          console.log('USER2: ', this.user);
+
           this.user = {...user};
           this.originalUser = {...user};
         },
@@ -50,7 +52,7 @@ export class CartFormComponent implements OnInit, OnDestroy {
   onSaveUser() {
     const user = {...this.user};
 
-    if (user.id) {
+    if (user.elem.id) {
       this.cartService.updateUser(user);
     } else {
       this.cartService.createUser(user);

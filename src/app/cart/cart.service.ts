@@ -27,7 +27,7 @@ export class CartService {
   }
 
   getTotalCount() {
-  const reducer = (accumulator: number, currentValue) => accumulator + currentValue.count;
+  const reducer = (accumulator: number, currentValue) => accumulator + (+currentValue.count);
   const init = this.arrayItems.reduce(reducer, 0);
   return init;
   }
@@ -57,6 +57,7 @@ export class CartService {
   }
 
   emptyCart() {
+    console.log('Empty!!!');
     this.arrayItems = [];
     this.channel.next(this.arrayItems);
 	}
@@ -101,7 +102,7 @@ export class CartService {
   getUser(id: number | string): Observable<Item> {
     return this.getUsers()
       .pipe(
-        map((users: Array<Item>) => users.find(user => user.id === +id)),
+        map((users: Array<Item>) => users.find(user => user.elem.id === +id)),
         catchError(err => throwError('Error in getUser method'))
       );
   }
@@ -111,7 +112,7 @@ export class CartService {
   }
 
   updateUser(user: Item): void {
-    const i = this.arrayItems.findIndex(u => u.id === user.id);
+    const i = this.arrayItems.findIndex(u => u.elem.id === user.elem.id);
 
     if (i > -1) {
       this.arrayItems.splice(i, 1, user);

@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+
+import { Item } from '../../shared/models/item';
 
 @Component({
   selector: 'app-cart-element',
@@ -7,9 +9,26 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartElementComponent implements OnInit {
+  @Input() cart: Item;
+  @Output() increment: EventEmitter < Item > = new EventEmitter();
+  @Output() decrement: EventEmitter < Item > = new EventEmitter();
+  @Output() remove: EventEmitter < Item > = new EventEmitter();
+  @Output() editItem = new EventEmitter<any>();
+  removeItem(item: Item) {
+    this.remove.emit(item);
+  }
 
-  constructor() { }
+  incrementCount(item: Item) {
+    this.increment.emit(item);
+  }
+  decrementCount(item: Item) {
+    this.decrement.emit(item);
+  }
 
+  onEditTtem() {
+    console.log('Click on Item: ', this.cart);
+    this.editItem.emit(this.cart);
+  }
   ngOnInit() {
   }
 

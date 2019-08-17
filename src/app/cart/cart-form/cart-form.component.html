@@ -1,1 +1,36 @@
-<p>cart-form works!</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="pannel-title">
+      {{ user.elem.name | uppercase}}
+    </h4>
+  </div>
+  <div class="panel-body">
+    <form *ngIf="user" (ngSubmit)="onSaveUser()" id="user-form" #form="ngForm">
+      <div class="form-group">
+        <label for="quantity">Quantity of unit</label>
+        <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Choose quantity of unit"
+          required [(ngModel)]="user.count">
+      </div>
+
+      <div class="form-group"><strong>Total price:</strong> {{user.count * user.elem.price | currency:'EUR'}}
+      </div>
+      <hr>
+      <div class="form-group"><strong>Item Reviews:</strong>
+        <div *ngIf="user.elem.reviews.length > 0; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>
+          <div *ngFor="let point of user.elem.reviews" style="margin-top:25px">{{point}}
+            <hr>
+          </div>
+        </ng-template>
+        <ng-template #elseBlock>
+          <div style="display:inline-block;">There is no reviews.</div>
+        </ng-template>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid" style="margin-right: 20px;">Save
+      </button>
+      <button class="btn btn-primary" type="button" (click)="onGoBack()">Back
+      </button>
+    </form>
+  </div>
+</div>

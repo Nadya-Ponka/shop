@@ -50,6 +50,7 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   emptyCart() {
+    this.arrayItems = [];
     this.cartService.emptyCart();
   }
 
@@ -68,12 +69,14 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.totalPrice = this.cartService.getTotalPrice();
     this.totalCount = this.cartService.getTotalCount();
     
-    /* this.sub = this.cartService.channel$.subscribe(
+   /*  this.sub = this.cartService.channel$.subscribe(
       data => {
         console.log('Получили элемент: ', data);
-        this.arrayItems = this.orderByPipe.transform(data, this.field, this.flag);
+        this.arrayItems =this.orderByPipe.transform(data, this.field, this.flag); 
         this.totalPrice = this.cartService.getTotalPrice();
         this.totalCount = this.cartService.getTotalCount();
+        console.log('Полученный массив: ', this.arrayItems);
+
       }
     ); */
   }
