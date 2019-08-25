@@ -49,7 +49,7 @@ export class AboutComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.localStorageService.setItem('Nadya Ponkratova');
+    this.localStorageService.setItem(this.userObject);
     this.localStorageService.getItem('LocalStorageService');
     this.localStorageService.removeItem('LocalStorageService');
     console.log('ConstantService returns constant: ', this.constFromService.getConstant());

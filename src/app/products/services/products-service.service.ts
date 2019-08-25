@@ -31,8 +31,7 @@ const productsList = [
   new Item(8, ['s', 'm', 'l'], ['green', 'red', 'yellow'], 'jacket', 'jacket', 15, 0)
 ];
 
-const productsListPromise = Promise.resolve(productsList);
-const userListObservable: Observable < Array < Item >> = of (productsList);
+const productListObservable: Observable < Array < Item >> = of (productsList);
 
 @Injectable({
   providedIn: 'root'
@@ -41,25 +40,15 @@ const userListObservable: Observable < Array < Item >> = of (productsList);
 export class ProductsService {
   constructor() {}
 
-  getProducts(): Promise < Item[] > {
-    return productsListPromise;
+  getProducts(): Observable < Item[] > {
+    return productListObservable;
   }
 
-  getProduct(id: number | string): Promise < Item > {
+  getProduct(id: number | string): Observable < Item > {
     return this.getProducts()
-      .then(products => products.find(product => product.id === +id))
-      .catch(() => Promise.reject('Error in getProduct method'));
-  }
-
-  getUsers(): Observable < Item[] > {
-    return userListObservable;
-  }
-
-  getUser(id: number | string): Observable < Item > {
-    return this.getUsers()
       .pipe(
-        map((users: Array < Item > ) => users.find(user => user.id === +id)),
-        catchError(err => throwError('Error in getUser method'))
+        map((products: Array < Item > ) => products.find(product => product.id === +id)),
+        catchError(err => throwError('Error in getProduct method'))
       );
   }
 

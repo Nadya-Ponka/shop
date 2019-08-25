@@ -3,11 +3,12 @@ import { Router, Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 // rxjs
 import { Observable, of } from 'rxjs';
-import { map, catchError, take } from 'rxjs/operators';
+import { map, catchError, take, delay, filter, finalize, switchMap } from 'rxjs/operators';
 
 import { Item } from './../../shared/models/item';
 import { ProductsService } from '../services/products-service.service';
 import { ProductsModule } from '../products.module';
+import { SpinnerService } from './../../widgets';
 
 @Injectable({
   providedIn: ProductsModule
@@ -15,22 +16,24 @@ import { ProductsModule } from '../products.module';
 export class ProductResolveGuard implements Resolve<Item> {
   constructor(
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private spinner: SpinnerService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Item | null> {
-    console.log('UserResolve Guard is called');
+    console.log('ProductResolve Guard is called');
 
     if (!route.paramMap.has('productID')) {
-      return of(new Item());
+      return of(new Item(Math.random() * 1000, [], [], '', '', 0, 0));
     }
-
+    this.spinner.show();
     const id = +route.paramMap.get('productID');
 
-    return this.productsService.getUser(id).pipe(
-      map((user: Item) => {
-        if (user) {
-          return user;
+    return this.productsService.getProduct(id).pipe(
+      delay(2000),
+      map((product: Item) => {
+        if (product) {
+          return product;
         } else {
           this.router.navigate(['/admin/product/edit']);
           return null;
@@ -38,10 +41,11 @@ export class ProductResolveGuard implements Resolve<Item> {
       }),
       take(1),
       catchError(() => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/products']);
         // catchError MUST return observable
         return of(null);
-      })
+      }),
+      finalize(() => this.spinner.hide())
     );
   }
 }

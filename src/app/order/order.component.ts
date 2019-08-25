@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 // rxjs
 import { Observable, Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 
 import { CartService } from './../cart/cart.service';
 import { Item } from '../shared/models/item';
@@ -30,24 +30,30 @@ export class OrderComponent implements OnInit {
 
   arrayItems$: Observable < Array < { elem: Item, count: number } >> ;
 
-  user: UserModel;
+  private user: {};
+  private items;
 
   private sub: Subscription;
   private showThanks = false;
 
   ngOnInit() {
-    this.user = new UserModel();
+    this.user = {
+      firstName: '',
+      lastName: '',
+      address: ''
+    };
     this.arrayItems$ = this.cartService.getUnits();
+    this.arrayItems$.pipe(take(1)).subscribe(value =>  this.items = value);
     this.totalPrice = this.cartService.getTotalPrice();
     this.totalCount = this.cartService.getTotalCount();
   }
 
   onConfirm() {
-    console.log('On CONFIRM ORDER: ', this.user, this.arrayItems$.value);
     this.showThanks = true;
+
     const order = {
       user: this.user,
-      order: this.arrayItems$.value
+      order: this.items
     };
     this.orderService.saveOrder(order);
   }

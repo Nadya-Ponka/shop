@@ -13,7 +13,8 @@
   </button>
 </header>
 <main>
-  <div>
+  <app-spinner *ngIf="spinnerService.isVisible()"></app-spinner>
+  <div *ngIf="!spinnerService.isVisible()">
     <div class="col-md-10">
       <router-outlet></router-outlet>
     </div>

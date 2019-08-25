@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     <div><strong>Your Order:</strong>
-      <div *ngFor="let item of arrayItems$ | async">
+      <div *ngFor="let item of items">
         <td style="padding-right: 25px;">{{item.elem.name | titlecase }}</td>
         <td>{{item.count}} * {{item.elem.price | currency:'EUR'}} = {{item.elem.price * item.count | currency:'EUR'}}
         </td>

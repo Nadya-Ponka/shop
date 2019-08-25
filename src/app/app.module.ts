@@ -11,6 +11,7 @@ import { OrderModule } from './order/orders.module';
 import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { LayoutModule } from './layout/layout.module';
+import { SpinnerModule } from './widgets/spinner/spinner.module';
 
 @NgModule({
  declarations: [
@@ -25,6 +26,7 @@ import { LayoutModule } from './layout/layout.module';
  CartModule,
  LayoutModule,
  OrderModule,
+ SpinnerModule.forRoot(),
  AppRoutingModule
  ],
  bootstrap: [AppComponent]

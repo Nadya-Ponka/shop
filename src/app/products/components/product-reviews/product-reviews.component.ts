@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Subscription } from 'rxjs';
+
 import { Item } from '../../../shared/models/item';
 import { ProductsService } from '../../services/products-service.service';
 
@@ -11,6 +13,7 @@ import { ProductsService } from '../../services/products-service.service';
 
 export class ProductReviewsComponent implements OnInit {
   review: Item;
+  private sub: Subscription;
 
   constructor(
     private productsService: ProductsService,
@@ -19,10 +22,15 @@ export class ProductReviewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.review = new Item();
     const id = this.route.snapshot.paramMap.get('productID');
 
-    this.productsService.getProduct(id).then((data) => this.review = data );
+    this.sub = this.productsService.getProduct(id)
+      .subscribe(
+        product => {
+          this.review = {...product};
+        },
+        err => console.log(err)
+      );
   }
 
   onSaveTask() {
