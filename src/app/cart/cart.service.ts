@@ -18,7 +18,10 @@ export class CartService {
 
   public arrayItems = [];
 
-  public userListObservable: Observable<Array<Item>> = of(this.arrayItems);
+  public userListObservable: Observable < Array < {
+    elem: Item,
+    count: number
+  } >> = of (this.arrayItems);
 
   getTotalPrice() {
     const reducer = (accumulator, currentValue) => accumulator + currentValue.elem.price * currentValue.count;
@@ -27,9 +30,9 @@ export class CartService {
   }
 
   getTotalCount() {
-  const reducer = (accumulator: number, currentValue) => accumulator + (+currentValue.count);
-  const init = this.arrayItems.reduce(reducer, 0);
-  return init;
+    const reducer = (accumulator: number, currentValue) => accumulator + (+currentValue.count);
+    const init = this.arrayItems.reduce(reducer, 0);
+    return init;
   }
 
   pushItem(item: Item): void {
@@ -57,17 +60,14 @@ export class CartService {
   }
 
   emptyCart() {
-    console.log('Empty!!!');
     this.arrayItems = [];
     this.channel.next(this.arrayItems);
-	}
-	
-  pushCarts(array: Item[]) {
-    this.arrayItems = null;
-    this.arrayItems = array;
   }
 
-  removeItem(item: { elem: Item, count: number }) {
+  removeItem(item: {
+    elem: Item,
+    count: number
+  }) {
     for (let i = 0; i < this.arrayItems.length; i++) {
       if (this.arrayItems[i].elem.id === item.elem.id) {
         this.arrayItems.splice(i, 1);
@@ -75,19 +75,25 @@ export class CartService {
     }
   }
 
-  incrementCount(item: { elem: Item, count: number }) {
+  incrementCount(item: {
+    elem: Item,
+    count: number
+  }) {
     for (let i = 0; i < this.arrayItems.length; i++) {
       if (this.arrayItems[i].elem.id === item.elem.id) {
-        this.arrayItems[i].count += 1;
+        this.arrayItems[i].count = +this.arrayItems[i].count + 1;
       }
     }
   }
 
-  decrementCount(item: { elem: Item, count: number }) {
+  decrementCount(item: {
+    elem: Item,
+    count: number
+  }) {
     for (let i = 0; i < this.arrayItems.length; i++) {
       if (this.arrayItems[i].elem.id === item.elem.id) {
         if (this.arrayItems[i].count > 1) {
-          this.arrayItems[i].count -= 1;
+          this.arrayItems[i].count = +this.arrayItems[i].count - 1;
         } else {
           this.arrayItems.splice(i, 1);
         }
@@ -95,23 +101,34 @@ export class CartService {
     }
   }
 
-  getUsers(): Observable<Item[]> {
+  getUnits(): Observable < {
+    elem: Item,
+    count: number
+  } [] > {
     return this.userListObservable;
   }
 
-  getUser(id: number | string): Observable<Item> {
-    return this.getUsers()
+  getUnit(id: number | string): Observable < {
+    elem: Item,
+    count: number
+  } > {
+    return this.getUnits()
       .pipe(
-        map((users: Array<Item>) => users.find(user => user.elem.id === +id)),
-        catchError(err => throwError('Error in getUser method'))
+        map((users: Array < {
+          elem: Item,
+          count: number
+        } > ) => users.find((user: {
+          elem: Item,
+          count: number
+        }) => user.elem.id === +id)),
+        catchError(err => throwError('Error in getUnit method'))
       );
   }
 
-  createUser(user: Item): void {
-    this.arrayItems.push(user);
-  }
-
-  updateUser(user: Item): void {
+  updateUser(user: {
+    elem: Item,
+    count: number
+  }): void {
     const i = this.arrayItems.findIndex(u => u.elem.id === user.elem.id);
 
     if (i > -1) {

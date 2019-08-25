@@ -1,7 +1,4 @@
-import {
-  Injectable
-} from '@angular/core';
-
+import { Injectable } from '@angular/core';
 
 @Injectable()
 
@@ -12,7 +9,7 @@ export class LocalStorageService {
     value: string
   };
 
-  setItem(value: string) {
+  setItem(value: object) {
     try {
       localStorage.setItem('LocalStorageService', JSON.stringify(value));
       console.log('Установен элемент в LocalStorage: ', value);

@@ -1,3 +1,11 @@
 <div class="full-justify">
-	<app-product [item]="product" *ngFor="let product of items | async" (buyProduct)="onBuy($event)" (showReviews)="onShowReviews($event)"></app-product>
+	<div *ngIf="authService.isLoggedIn" style="margin:20px;display:block;width:100%;">
+    	<button class="btn btn-primary" (click)="onCreateProduct()">Add New Product</button>
+	</div>
+	<br><br>
+
+	<app-product [item]="product" *ngFor="let product of items | async" (buyProduct)="onBuy($event)" 
+	(showReviews)="onShowReviews($event)" (editProduct)="onEditProduct($event)"
+	[logged]="authService.isLoggedIn"
+	></app-product>
 </div>

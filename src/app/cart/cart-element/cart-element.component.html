@@ -1,11 +1,12 @@
-<td>{{cart.elem.name | titlecase }}</td>
-<td (click)="removeItem(cart)"><img src="./../../assets/images/images.png" style="cursor:pointer;" alt="delete item" />
-</td>
-<td class="quantity-wrapper">
-    <a class="plus-minus minus" (click)="decrementCount(cart)">-</a>
-        <span class="quantity">{{cart.count}}</span>
-    <a class="plus-minus plus" (click)="incrementCount(cart)">+</a>
-</td>
-<td>{{cart.elem.price | currency:'EUR'}}</td>
-<td>{{cart.elem.price * cart.count | currency:'EUR'}}</td>
-<td><button class="btn btn-secondary" style="line-height:1;" (click)="onEditTtem()">EDIT</button></td>
+  <td>{{item.elem.name | titlecase }}</td>
+  <td (click)="removeItem(item)"><img src="./../../assets/images/images.png" style="cursor:pointer;"
+      alt="delete item" />
+  </td>
+  <td class="quantity-wrapper">
+    <a class="plus-minus minus" (click)="decrementCount(item)">-</a>
+    <span class="quantity">{{item.count}}</span>
+    <a class="plus-minus plus" (click)="incrementCount(item)">+</a>
+  </td>
+  <td>{{item.elem.price | currency:'EUR'}}</td>
+  <td>{{item.elem.price * item.count | currency:'EUR'}}</td>
+  <td><button class="btn btn-secondary" style="line-height:1;" (click)="onEditTtem()">EDIT</button></td>

@@ -4,42 +4,34 @@ import { ActivatedRoute, Router  } from '@angular/router';
 // rxjs
 import { Subscription } from 'rxjs';
 
-import { Item } from './../../shared/models/item';
 import { CartService } from './../cart.service';
+import { Item } from './../../shared/models/item';
 
-/*import { UserArrayService } from './../../services/user-array.service';
- */
 @Component({
-  selector: 'app-cart-form',
   templateUrl: './cart-form.component.html',
   styleUrls: ['./cart-form.component.css']
 })
 
 export class CartFormComponent implements OnInit, OnDestroy {
-  user: Item;
-  originalUser: Item;
+  item: { elem: Item, count: number };
+  originalUnit: { elem: Item, count: number };
 
   private sub: Subscription;
 
   constructor(
     private cartService: CartService,
-/*     private userArrayService: UserArrayService,
- */    private route: ActivatedRoute,
-  private router: Router
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.user = new Item(/* null, '', '' */);
-
     // we should recreate component because this code runs only once
     const id = +this.route.snapshot.paramMap.get('userID');
-    this.sub = this.cartService.getUser(id)
+    this.sub = this.cartService.getUnit(id)
       .subscribe(
-        user => {
-          console.log('USER2: ', this.user);
-
-          this.user = {...user};
-          this.originalUser = {...user};
+        item => {
+          this.item = {...item};
+          this.originalUnit = {...item};
         },
         err => console.log(err)
       );
@@ -50,15 +42,16 @@ export class CartFormComponent implements OnInit, OnDestroy {
   }
 
   onSaveUser() {
-    const user = {...this.user};
+    const item = {...this.item};
 
-    if (user.elem.id) {
-      this.cartService.updateUser(user);
+    if (item.elem.id) {
+      this.cartService.updateUser(item);
+      console.log('NAVIGATE');
+      this.router.navigate(['/cart', {editedUnitID: item.elem.id}]);
     } else {
-      this.cartService.createUser(user);
+      this.onGoBack();
     }
-    this.originalUser = {...this.user};
-    this.onGoBack();
+    this.originalUnit = {...this.item};
   }
 
   onGoBack() {

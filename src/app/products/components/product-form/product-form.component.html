@@ -1,0 +1,38 @@
+<div class="panel panel-default" style="margin-top:20px;">
+  <div class="panel-heading">
+    <h4 class="pannel-title">Edit Item:</h4>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="onSaveItem()" id="user-form" #form="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Insert item name" required
+              [(ngModel)]="item.name">
+          </div>
+        <div class="form-group">
+        <label for="size">Sizes</label>
+        <input type="text" class="form-control" id="size" name="size" placeholder="Chage item sizes" required
+          [(ngModel)]="item.size">
+      </div>
+      <div class="form-group">
+        <label for="colors">Colors</label>
+        <input type="text" class="form-control" id="colors" name="colors" placeholder="Chage item colors"
+          [(ngModel)]="item.colors">
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Change item price"
+          [(ngModel)]="item.price">
+      </div>
+      <div class="form-group">
+          <label for="category">Available</label>
+          <input type="number" class="form-control" id="category" name="category" placeholder="Change available"
+            [(ngModel)]="item.category">
+        </div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid" style="margin-right: 25px;">Save
+      </button>
+      <button class="btn btn-primary" type="button" (click)="onGoBack()">Back
+      </button>
+    </form>
+  </div>
+</div>

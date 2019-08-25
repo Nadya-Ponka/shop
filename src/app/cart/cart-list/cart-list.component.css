@@ -19,3 +19,7 @@ select {
 th, td {
 	width: 15%;
 }
+
+button {
+	margin: 10px;
+}

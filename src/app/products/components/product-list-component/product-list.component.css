@@ -4,5 +4,5 @@
 	flex-wrap: wrap;
 	border-bottom: #aa9b77 solid 2px;
 	width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
 }

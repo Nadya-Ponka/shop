@@ -1,0 +1,47 @@
+<div class="panel panel-default" style="margin-top: 25px;" *ngIf="!showThanks">
+  <div class="panel-heading">
+    <h4 class="pannel-title">
+      Finish your Order
+    </h4>
+  </div>
+  <div class="panel-body">
+    <div><strong>Your Order:</strong>
+      <div *ngFor="let item of arrayItems$ | async">
+        <td style="padding-right: 25px;">{{item.elem.name | titlecase }}</td>
+        <td>{{item.count}} * {{item.elem.price | currency:'EUR'}} = {{item.elem.price * item.count | currency:'EUR'}}
+        </td>
+      </div>
+      <hr>
+      <div><strong>Total count of units: </strong>{{ totalCount }}. <strong>Total Cost:
+        </strong>{{ totalPrice | currency:'EUR' }}</div>
+    </div>
+    <hr>
+    <br>
+    <form (ngSubmit)="onConfirm()" id="user-form" #form="ngForm">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required
+          [(ngModel)]="user.firstName">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required
+          [(ngModel)]="user.lastName">
+      </div>
+      <div class="form-group">
+        <label for="address">Delivery Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Delivery Address" required
+          [(ngModel)]="user.address">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid" style="margin-right: 20px;">Confirm Order
+      </button>
+      <button class="btn btn-primary" type="button" (click)="onGoCart()">Back
+      </button>
+    </form>
+  </div>
+</div>
+<div *ngIf="showThanks">
+    <h3 style="margin: 25px 0;">Thank you for Shopping!</h3>
+    <button class="btn btn-primary" type="button" (click)="onGoBack()">Back to Store</button>
+  </div>
+

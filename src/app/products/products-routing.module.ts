@@ -5,14 +5,10 @@ import { ProductListComponent } from './components/product-list-component/produc
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 
 const routes: Routes = [
-	{
+  {
     path: 'home',
     component: ProductListComponent
-  },
-	{
-		path: 'product/:productID',
-		component: ProductReviewsComponent
-	}
+  }
 ];
 
 @NgModule({

@@ -1,27 +1,14 @@
-import {
-  Component,
+import { Component,
   OnInit,
   Optional,
   Inject
 } from '@angular/core';
 
-import {
-  LocalStorageService
-} from './../../../services/local-storage.service';
-import {
-  ConfigOptionsService
-} from './../../../services/config-options.service';
-import {
-  ConstantService,
-  constantFromService
-} from './../../../services/constant.service';
-import {
-  GeneratorService
-} from './../../../services/generator.service';
-import {
-  DataString,
-  DataStringRandome
-} from './../../../services/generator-factory.service';
+import { LocalStorageService } from './../../../services/local-storage.service';
+import { ConfigOptionsService } from './../../../services/config-options.service';
+import { ConstantService, constantFromService } from './../../../services/constant.service';
+import { GeneratorService } from './../../../services/generator.service';
+import { DataString, DataStringRandome } from './../../../services/generator-factory.service';
 
 @Component({
   selector: 'app-about',

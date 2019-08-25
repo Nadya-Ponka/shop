@@ -4,30 +4,40 @@ import { Routes, RouterModule, Router } from '@angular/router';
 import { Item } from '../../../shared/models/item';
 
 @Component({
- selector: 'app-product',
- templateUrl: './product.component.html',
- styleUrls: ['./product.component.css']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css']
 })
 
 export class ProductComponent implements OnInit {
-    constructor (private router: Router) {}
- @Input() item: Item;
- @Output() buyProduct: EventEmitter<Item> = new EventEmitter();
- @Output() showReviews = new EventEmitter<Item>();
+  constructor(private router: Router) {}
+  @Input() item: Item;
+  @Input() logged: boolean;
 
- onBuy(item: Item) {
-  console.log('Congratulation! Product was bought!', item);
-  this.buyProduct.emit(item);
- }
+  @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
+  @Output() showReviews = new EventEmitter < Item > ();
+  @Output() editProduct = new EventEmitter < Item > ();
 
- ngOnInit() {}
- 
- onShowReviews() {
-	 console.log('this.item: ', this.item);
-    this.router.navigate([{ outlets: { review: null }}]);
+  onBuy(item: Item) {
+    console.log('Congratulation! Product was bought!', item);
+    this.buyProduct.emit(item);
+  }
+
+  ngOnInit() {}
+
+  onShowReviews() {
+    console.log('this.item: ', this.item);
+    this.router.navigate([{
+      outlets: {
+        review: null
+      }
+    }]);
     setTimeout(() => {
       this.showReviews.emit(this.item);
-    },100);
- }
- 
+    }, 100);
+  }
+
+  onEditProduct() {
+    this.editProduct.emit(this.item);
+  }
 }

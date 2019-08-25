@@ -1,24 +1,24 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="pannel-title">
-      {{ user.elem.name | uppercase}}
+      {{ item.elem.name | uppercase}}
     </h4>
   </div>
   <div class="panel-body">
-    <form *ngIf="user" (ngSubmit)="onSaveUser()" id="user-form" #form="ngForm">
+    <form *ngIf="item" (ngSubmit)="onSaveUser()" id="user-form" #form="ngForm">
       <div class="form-group">
         <label for="quantity">Quantity of unit</label>
         <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Choose quantity of unit"
-          required [(ngModel)]="user.count">
+          required [(ngModel)]="item.count">
       </div>
 
-      <div class="form-group"><strong>Total price:</strong> {{user.count * user.elem.price | currency:'EUR'}}
+      <div class="form-group"><strong>Total price:</strong> {{item.count * item.elem.price | currency:'EUR'}}
       </div>
       <hr>
       <div class="form-group"><strong>Item Reviews:</strong>
-        <div *ngIf="user.elem.reviews.length > 0; then thenBlock else elseBlock"></div>
+        <div *ngIf="item.elem.reviews.length > 0; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>
-          <div *ngFor="let point of user.elem.reviews" style="margin-top:25px">{{point}}
+          <div *ngFor="let point of item.elem.reviews" style="margin-top:25px">{{point}}
             <hr>
           </div>
         </ng-template>

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CartComponent } from './cart.component';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartFormComponent } from './cart-form/cart-form.component';
+import { CartElementComponent } from './cart-element/cart-element.component';
 
 const routes: Routes = [
     {
@@ -20,13 +21,14 @@ const routes: Routes = [
           },
         ]
       }
-    
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class CartRoutingModule { 
-    static components = [CartComponent, CartListComponent, CartFormComponent];
+
+export class CartRoutingModule {
+    static components = [CartComponent, CartListComponent, CartFormComponent, CartElementComponent];
 }

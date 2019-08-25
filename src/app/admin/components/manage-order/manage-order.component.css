@@ -1,0 +1,13 @@
+table {
+	margin-top: 25px;
+}
+
+td {
+	width: 33.3%;
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+:host.edited > td {
+	background-color:#ffcccc;
+}

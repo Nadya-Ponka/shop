@@ -8,10 +8,10 @@ import { Location } from '@angular/common';
 })
 export class PathNotFoundComponent {
 
-	constructor(private location: Location) { }
-	
-	backCatalogue(): void {
-		this.location.back();
-	}
+  constructor(private location: Location) {}
+
+  backCatalogue(): void {
+    this.location.back();
+  }
 
 }

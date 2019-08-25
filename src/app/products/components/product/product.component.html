@@ -27,4 +27,5 @@
 		</tr>
 		<button class="btn btn-primary" (click)='onBuy(item)' [disabled]="item.category" style="margin: 0 10px 10px;">BUY</button>
 		<button class="btn btn-secondary" [routerLink]="[{outlets: {review: ['review']}}]" (click)="onShowReviews()" style="margin: 0 10px 10px;">REVIEWS</button>
+		<button class="btn btn-primary" (click)="onEditProduct()" *ngIf="logged" style="margin: 0 10px 10px;">Edit</button>
 	</table>

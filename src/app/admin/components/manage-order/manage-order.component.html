@@ -1,0 +1,33 @@
+<div class="panel-heading">
+  <div *ngIf="orders.length > 0; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <table class="middle">
+      <thead>
+        <tr>
+          <th>Order ID<hr></th>
+          <th>Address<hr></th>
+          <th>Order<hr></th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orders" style="width: 100%; border-bottom: solid .5px #d2dae2; padding-bottom: 5px;">
+          <td>{{item.id}}
+          </td>
+          <td>{{item.user.firstName}}<br>
+            {{item.user.lastName}}<br>
+            {{item.user.address}}
+          </td>
+          <td>
+            <div *ngFor="let order of item.order">
+              Element: {{order.elem.name}}, Price: {{order.elem.price | currency:'EUR' }}, Count: {{order.count}}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  <ng-template #elseBlock>
+    <h4 style="display:inline-block;">There is no order</h4>
+  </ng-template>
+</div>
