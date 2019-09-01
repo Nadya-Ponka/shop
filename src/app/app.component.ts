@@ -20,8 +20,7 @@ export class AppComponent implements OnInit {
  title = 'Made by Nadya Ponkratova';
 
  ngOnInit() {
-  let settings = this.appSettingsService.loadFromLocalstorage();
+  const settings = this.appSettingsService.loadFromLocalstorage();
   console.log('Настройки App из Localstorage в AppComponent: ', settings);
-
  }
 }

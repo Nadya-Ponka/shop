@@ -10,7 +10,7 @@ import { ProductsAPI } from './../products.config';
 @Injectable({
   providedIn: 'root'
 })
- 
+
 export class ProductsObservableService {
   constructor(
     private http: HttpClient,
@@ -50,19 +50,21 @@ export class ProductsObservableService {
   }
 
 
-  createProduct(product: Item): Observable<Item> {
+  createProduct(product: Item): Observable < Item > {
     const url = this.productsBaseUrl;
 
     const body = JSON.stringify(product);
     const options = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     };
 
-       return this.http
-          .post<Item>(url, body, options)
-          .pipe(
-            catchError( this.handleError )
-          );
+    return this.http
+      .post < Item > (url, body, options)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err: HttpErrorResponse) {

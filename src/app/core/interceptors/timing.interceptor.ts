@@ -6,7 +6,7 @@ import { filter, map } from 'rxjs/operators';
 
 @Injectable()
 export class TimingInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest < any > , next: HttpHandler): Observable < HttpEvent < any >> {
     // request interceptor
     let clonedRequest;
     let startRequest;
@@ -23,18 +23,18 @@ export class TimingInterceptor implements HttpInterceptor {
       clonedRequest = req;
     }
 
-// response interceptor
-return next.handle(clonedRequest).pipe(
-  filter((event: HttpEvent<any>) => event.type === HttpEventType.Response),
-  map((event: HttpResponse<any>) => {
-    // do stuff with response
-    if (event.url.includes('productsList/2')) {
-      console.log('Response Interceptor: ');
-      console.log(event);
-      console.log('Request took ' + (performance.now() - startRequest) + ' ms');
-    }
-    return event;
-  })
-);
-}
+    // response interceptor
+    return next.handle(clonedRequest).pipe(
+      filter((event: HttpEvent < any > ) => event.type === HttpEventType.Response),
+      map((event: HttpResponse < any > ) => {
+        // do stuff with response
+        if (event.url.includes('productsList/2')) {
+          console.log('Response Interceptor: ');
+          console.log(event);
+          console.log('Request took ' + (performance.now() - startRequest) + ' ms');
+        }
+        return event;
+      })
+    );
+  }
 }

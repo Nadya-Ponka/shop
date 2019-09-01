@@ -10,7 +10,7 @@ import { appSettingsAPI } from './app-settings.config';
 
 import { LocalStorageService } from './local-storage.service';
 
-class appSettingsObject {
+class AppSettingsObject {
   constructor(
     public id: string,
     public title: string,
@@ -25,9 +25,9 @@ class appSettingsObject {
 export class AppSettingsService {
 
   private defaultAppSettings = {
-      "id": "Default-Shop",
-      "title": "Hello, World!",
-      "name": "Default-Shop"
+    id: 'Default-Shop',
+    title: 'Hello, World!',
+    name: 'Default-Shop'
   };
   private appSettings: appSettingsObject;
   private sub: Subscription;
@@ -36,43 +36,43 @@ export class AppSettingsService {
     private localStorageService: LocalStorageService,
     private http: HttpClient,
     @Inject(appSettingsAPI) private appSettingsUrl: string
-
-  ) { }
+  ) {}
 
   loadFromLocalstorage() {
     this.appSettings = this.localStorageService.getItem('AppSettings');
 
     if (!this.appSettings) {
       this.sub = this.getSettings()
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      )
-      .subscribe(
-        settings => {  
-          this.appSettings = { ...settings };
-          console.log('AppSettings from file: ', this.appSettings);
-
-          if(this.appSettings) {
-            this.localStorageService.setItem('AppSettings', this.appSettings);
-          } else {
-            this.appSettings = {...this.defaultAppSettings};
-            console.log('AppSettings from DefaultAppSettings: ', this.appSettings);
-          }
-        },
-        catchError(this.handleError)
-      );      
+        .pipe(
+          retry(2),
+          catchError(this.handleError)
+        )
+        .subscribe(
+          settings => {
+            this.appSettings = {
+              ...settings
+            };
+            console.log('AppSettings from file: ', this.appSettings);
+            if (this.appSettings) {
+              this.localStorageService.setItem('AppSettings', this.appSettings);
+            }
+          },
+          catchError(this.handleError)
+        );
+    } else {
+      this.appSettings = {
+        ...this.defaultAppSettings
+      };
+      console.log('AppSettings from DefaultAppSettings: ', this.appSettings);
     }
     return this.appSettings;
   }
 
-  getSettings(): Observable <any> {
+  getSettings(): Observable < any > {
     return this.http.get < Item[] > (this.appSettingsUrl).pipe(
       retry(2),
       catchError(this.handleError)
     );
-
-    
   }
 
   private handleError(err: HttpErrorResponse) {

@@ -7,8 +7,6 @@ import { CartService } from '../../../cart/cart.service';
 
 import { AuthService } from './../../../core';
 
-import { Observable } from 'rxjs';
-
 @Component({
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
@@ -56,7 +54,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-   //this.items = this.productsService.getProducts();
+   // this.items = this.productsService.getProducts();
    this.items = this.productsPromiseService.getProducts();
   }
 

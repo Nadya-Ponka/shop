@@ -10,7 +10,7 @@ import { Item } from '../../../shared/models/item';
 })
 
 export class ProductComponent implements OnInit {
-  
+
   constructor(private router: Router) {}
 
   @Input() item: Item;

@@ -310,6 +310,23 @@
       "category": 0,
       "id": 16,
       "image": "unknown"
+    },
+    {
+      "name": "Skirt",
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "price": "19.99",
+      "category": 0,
+      "id": 17,
+      "image": "unknown"
     }
   ]
 }

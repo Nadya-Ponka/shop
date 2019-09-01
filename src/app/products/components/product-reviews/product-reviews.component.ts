@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
 
-import { Subscription } from 'rxjs';
-import { map, catchError, take } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 
 import { Item } from '../../../shared/models/item';
@@ -14,7 +12,7 @@ import { ProductsService, ProductsPromiseService } from '../../services';
 })
 
 export class ProductReviewsComponent implements OnInit {
-  review: Promise < Item > ;
+  public review: Item;
 
   constructor(
     private productsService: ProductsService,
@@ -24,7 +22,7 @@ export class ProductReviewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.review = new Item({});
+    this.review = new Item( null, [], [], '', '', 0, 0, [] );
 
     this.route.paramMap
       .pipe(
@@ -43,19 +41,7 @@ export class ProductReviewsComponent implements OnInit {
       );
   }
 
-/*   onSaveTask() {
-    const review = {
-      ...this.review
-    };
-
-    if (review.id) {
-      this.productsService.createProduct(review);
-    } else {
-      this.productsService.updateProduct(review);
-    }
-  }
- */
-  onGoBack(): void {
+onGoBack(): void {
     this.router.navigate([{
       outlets: {
         review: null
