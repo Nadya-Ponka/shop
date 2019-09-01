@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class LocalStorageService {
 
   constructor() {}
-  private element: {
-    value: string
-  };
+  private element;
 
-  setItem(value: object) {
+  setItem(key: string, value: object) {
     try {
-      localStorage.setItem('LocalStorageService', JSON.stringify(value));
-      console.log('Установен элемент в LocalStorage: ', value);
+      localStorage.setItem(key, JSON.stringify(value));
+      console.log(`Установен элемент в LocalStorage с ключом ${key}: `, value);
     } catch (e) {
       console.error('Error saving to localStorage', e);
     }

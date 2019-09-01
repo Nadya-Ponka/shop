@@ -7,6 +7,7 @@ import { ProductListComponent } from './components/product-list-component/produc
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 import { ProductsRoutingModule } from './products-routing.module';
+import { ProductsAPIProvider } from './products.config';
 
 @NgModule({
   declarations: [ProductComponent, ProductListComponent, ProductReviewsComponent, ProductFormComponent],
@@ -17,6 +18,10 @@ import { ProductsRoutingModule } from './products-routing.module';
     CommonModule,
     FormsModule,
     ProductsRoutingModule
+  ],
+  providers: [
+    ProductsAPIProvider
   ]
+
 })
 export class ProductsModule {}

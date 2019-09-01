@@ -1,0 +1,315 @@
+{
+  "productsList": [
+    {
+      "id": 0,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": "7.99",
+      "category": 0,
+      "reviews": [
+        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
+        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
+      ]
+    },
+    {
+      "id": 1,
+      "size": [
+        "10Litry"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "backpack",
+      "name": "backpack",
+      "price": 5.95,
+      "category": 0,
+      "reviews": [
+        "Magnifique petit caraco . Tres belle couleur, Rendu qualitatif et chic. Acheté en taille 32, j'ai dû neanmoins retoucher les bretelles qui étaient trop longues!"
+      ]
+    },
+    {
+      "id": 2,
+      "size": [
+        "M",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        "grey",
+        "blue"
+      ],
+      "image": "t-shirt-1",
+      "name": "T-shirt",
+      "price": "19.99",
+      "category": 0,
+      "reviews": []
+    },
+    {
+      "id": 3,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "turquois",
+        "red",
+        "yellow"
+      ],
+      "image": "jacket",
+      "name": "jacket",
+      "price": 51,
+      "category": 0,
+      "reviews": []
+    },
+    {
+      "id": 4,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "pants",
+      "name": "pants",
+      "price": 12,
+      "category": 1,
+      "reviews": [
+        "Très joli caraco mais d’une fragilité impressionnante. Après l’avoir porté une journée, le tissu est « griffé » un peu partout",
+        "Le top taille bien sauf au niveau des bretelles qui me sont légèrement trop grandes. Mais je ne regrette pas de mon achat !"
+      ]
+    },
+    {
+      "id": 5,
+      "size": [
+        "s",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": 9.5,
+      "category": 1,
+      "reviews": []
+    },
+    {
+      "id": 6,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "pink"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": 5,
+      "category": 1,
+      "reviews": [
+        "Très joli caraco mais d’une fragilité impressionnante. Après l’avoir porté une journée, le tissu est « griffé » un peu partout",
+        "Le top taille bien sauf au niveau des bretelles qui me sont légèrement trop grandes. Mais je ne regrette pas de mon achat !"
+      ]
+    },
+    {
+      "id": 7,
+      "size": [
+        "m",
+        "l"
+      ],
+      "colors": [
+        "violet",
+        "pink"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": 7.65,
+      "category": 0,
+      "reviews": []
+    },
+    {
+      "id": 8,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "pants",
+      "name": "pants",
+      "price": 6,
+      "category": 0,
+      "reviews": []
+    },
+    {
+      "id": 9,
+      "size": [
+        "36",
+        "37",
+        "38",
+        "39"
+      ],
+      "colors": [
+        "black",
+        "red"
+      ],
+      "image": "trekking-shoes",
+      "name": "trekking-shoes",
+      "price": 75,
+      "category": 1,
+      "reviews": []
+    },
+    {
+      "id": 10,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "pants",
+      "name": "pants",
+      "price": 8,
+      "category": 0,
+      "reviews": [
+        "Magnifique petit caraco . Tres belle couleur, Rendu qualitatif et chic. Acheté en taille 32, j'ai dû neanmoins retoucher les bretelles qui étaient trop longues!"
+      ]
+    },
+    {
+      "id": 11,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "pants",
+      "name": "skirt",
+      "price": 5,
+      "category": 0,
+      "reviews": []
+    },
+    {
+      "id": 12,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": 5,
+      "category": 0,
+      "reviews": []
+    },
+    {
+      "id": 13,
+      "size": [
+        "39",
+        "40",
+        "41",
+        "42"
+      ],
+      "colors": [
+        "grey",
+        "brown"
+      ],
+      "image": "trekking-shoes",
+      "name": "trekking-shoes",
+      "price": 80,
+      "category": 1,
+      "reviews": []
+    },
+    {
+      "id": 14,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": 19.99,
+      "category": 1,
+      "reviews": []
+    },
+    {
+      "id": 15,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": "5.99",
+      "category": 0,
+      "reviews": [
+        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
+        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
+      ]
+    },
+    {
+      "name": "Skirt",
+      "size": [
+        "s",
+        "l"
+      ],
+      "colors": [
+        "beige",
+        "red"
+      ],
+      "price": "17",
+      "category": 0,
+      "id": 16,
+      "image": "unknown"
+    }
+  ]
+}

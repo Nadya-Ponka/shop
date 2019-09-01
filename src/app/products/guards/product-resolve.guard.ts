@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, take, delay, filter, finalize, switchMap } from 'rxjs/operators';
 
 import { Item } from './../../shared/models/item';
-import { ProductsService } from '../services/products-service.service';
+import { ProductsService, ProductsObservableService } from '../services';
 import { ProductsModule } from '../products.module';
 import { SpinnerService } from './../../widgets';
 
@@ -17,7 +17,8 @@ export class ProductResolveGuard implements Resolve<Item> {
   constructor(
     private productsService: ProductsService,
     private router: Router,
-    private spinner: SpinnerService
+    private spinner: SpinnerService,
+    private productsObservableService: ProductsObservableService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Item | null> {
@@ -29,7 +30,7 @@ export class ProductResolveGuard implements Resolve<Item> {
     this.spinner.show();
     const id = +route.paramMap.get('productID');
 
-    return this.productsService.getProduct(id).pipe(
+    return this.productsObservableService.getProduct(id).pipe(
       delay(2000),
       map((product: Item) => {
         if (product) {

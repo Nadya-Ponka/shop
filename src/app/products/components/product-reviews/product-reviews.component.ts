@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
 
 import { Subscription } from 'rxjs';
+import { map, catchError, take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import { Item } from '../../../shared/models/item';
-import { ProductsService } from '../../services/products-service.service';
+import { ProductsService, ProductsPromiseService } from '../../services';
 
 @Component({
   templateUrl: './product-reviews.component.html',
@@ -12,29 +14,39 @@ import { ProductsService } from '../../services/products-service.service';
 })
 
 export class ProductReviewsComponent implements OnInit {
-  review: Item;
-  private sub: Subscription;
+  review: Promise < Item > ;
 
   constructor(
     private productsService: ProductsService,
+    private productsPromiseService: ProductsPromiseService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('productID');
+    this.review = new Item({});
 
-    this.sub = this.productsService.getProduct(id)
+    this.route.paramMap
+      .pipe(
+        switchMap((params: ParamMap) => {
+          return params.get('productID') ?
+            this.productsPromiseService.getProduct(+params.get('productID'))
+            // when Promise.resolve(null) => task = null => {...null} => {}
+            :
+            Promise.resolve(null);
+        }))
       .subscribe(
-        product => {
-          this.review = {...product};
+        product => this.review = {
+          ...product
         },
         err => console.log(err)
       );
   }
 
-  onSaveTask() {
-    const review = { ...this.review };
+/*   onSaveTask() {
+    const review = {
+      ...this.review
+    };
 
     if (review.id) {
       this.productsService.createProduct(review);
@@ -42,9 +54,12 @@ export class ProductReviewsComponent implements OnInit {
       this.productsService.updateProduct(review);
     }
   }
-
+ */
   onGoBack(): void {
-    this.router.navigate([{ outlets: { review: null }
+    this.router.navigate([{
+      outlets: {
+        review: null
+      }
     }]);
   }
 }

@@ -10,7 +10,9 @@ import { Item } from '../../../shared/models/item';
 })
 
 export class ProductComponent implements OnInit {
+  
   constructor(private router: Router) {}
+
   @Input() item: Item;
   @Input() logged: boolean;
 
@@ -26,7 +28,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {}
 
   onShowReviews() {
-    console.log('this.item: ', this.item);
+    console.log('Item for Review From Product Component: ', this.item);
     this.router.navigate([{
       outlets: {
         review: null
@@ -34,7 +36,7 @@ export class ProductComponent implements OnInit {
     }]);
     setTimeout(() => {
       this.showReviews.emit(this.item);
-    }, 100);
+    }, 50);
   }
 
   onEditProduct() {

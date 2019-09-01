@@ -29,9 +29,9 @@ const routes: Routes = [{
       {
         path: 'product/edit/:productID',
         component: ProductFormComponent,
-        resolve: {
+        /* resolve: {
           product: ProductResolveGuard
-        }
+        } */
       },
       /*           { path: '', component: ProductListComponent }
        */

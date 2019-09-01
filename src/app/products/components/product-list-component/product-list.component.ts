@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular
 import { Router } from '@angular/router';
 
 import { Item } from '../../../shared/models/item';
-import { ProductsService } from '../../services/products-service.service';
+import { ProductsService, ProductsPromiseService } from '../../services';
 import { CartService } from '../../../cart/cart.service';
 
 import { AuthService } from './../../../core';
@@ -17,13 +17,14 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   constructor(
     private router: Router,
     private productsService: ProductsService,
+    private productsPromiseService: ProductsPromiseService,
     private cartService: CartService,
     public authService: AuthService,
   ) {}
 
   @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
 
-  items: Observable<Array<Item>>;
+  items: Promise<Array<Item>>;
 
   onBuy($event) {
     console.log('Product was bought: ', $event, this.cartService);
@@ -55,7 +56,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-   this.items = this.productsService.getProducts();
+   //this.items = this.productsService.getProducts();
+   this.items = this.productsPromiseService.getProducts();
   }
 
   ngAfterViewInit() {}
