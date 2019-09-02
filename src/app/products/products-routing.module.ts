@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProductListComponent } from './components/product-list-component/product-list.component';
+// лишний импорт?
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 
 const routes: Routes = [

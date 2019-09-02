@@ -8,7 +8,7 @@ export class OrderService {
 
   constructor() {}
 
-  public orders = [];
+  public orders = []; // типа нет?
 
   private orderID = 0;
   private element: {

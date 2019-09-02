@@ -13,6 +13,8 @@ import { SpinnerService } from './../../widgets';
 @Injectable({
   providedIn: ProductsModule
 })
+// Этот гард насколько я понял используется в админке,
+// может его расположить в admin/guards/
 export class ProductResolveGuard implements Resolve<Item> {
   constructor(
     private productsService: ProductsService,

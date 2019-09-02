@@ -9,7 +9,7 @@ export class ManageOrderComponent implements OnInit {
 
   constructor() { }
 
-  private orders = [];
+  private orders = []; // public
 
   ngOnInit() {
     try {

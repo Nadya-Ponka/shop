@@ -22,19 +22,19 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private router: Router,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute, // похоже не используется
   ) { }
 
-  public totalPrice: number;
+  public totalPrice: number; // может такой тип использовать [number, number]?
   public totalCount: number;
 
   arrayItems$: Observable < Array < { elem: Item, count: number } >> ;
 
-  private user: {};
-  private items;
+  private user: {}; // <-- public, используется в шаблоне
+  private items; // <-- public
 
   private sub: Subscription;
-  private showThanks = false;
+  private showThanks = false; // <-- public
 
   ngOnInit() {
     this.user = {
