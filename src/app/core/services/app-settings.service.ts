@@ -49,16 +49,16 @@ export class AppSettingsService {
             console.log('AppSettings from file: ', this.appSettings);
             if (this.appSettings) {
               this.localStorageService.setItem('AppSettings', this.appSettings);
+            } else {
+              this.appSettings = {
+                ...this.defaultAppSettings
+              };
+              console.log('AppSettings from DefaultAppSettings: ', this.appSettings);
             }
           },
           catchError(this.handleError)
         );
-    } else {
-      this.appSettings = {
-        ...this.defaultAppSettings
-      };
-      console.log('AppSettings from DefaultAppSettings: ', this.appSettings);
-    }
+    } 
     return this.appSettings;
   }
 
