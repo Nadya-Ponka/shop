@@ -14,7 +14,7 @@ import { ProductsService } from '../../services/products-service.service';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
-  private item;
+  private item; // используется в шаблоне, а значит не может быть приватным + желательно добавить тип.
 
   constructor(
     private route: ActivatedRoute,

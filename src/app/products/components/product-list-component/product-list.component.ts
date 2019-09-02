@@ -32,6 +32,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   onShowReviews(product: Item): void {
+    // Была какая-то проблема, если не выполнять обнуление?
     this.router.navigate([{
       outlets: {
         review: null

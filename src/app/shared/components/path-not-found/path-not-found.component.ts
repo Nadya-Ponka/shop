@@ -10,6 +10,7 @@ export class PathNotFoundComponent {
 
   constructor(private location: Location) {}
 
+  // Может быть backToCatalogue()
   backCatalogue(): void {
     this.location.back();
   }

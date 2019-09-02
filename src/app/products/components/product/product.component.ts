@@ -27,6 +27,7 @@ export class ProductComponent implements OnInit {
 
   onShowReviews() {
     console.log('this.item: ', this.item);
+    // Почему так сложно? В родительском компоненте уже есть такой код по обнулению.
     this.router.navigate([{
       outlets: {
         review: null

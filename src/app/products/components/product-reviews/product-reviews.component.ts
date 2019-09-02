@@ -33,6 +33,7 @@ export class ProductReviewsComponent implements OnInit {
       );
   }
 
+  // по моему нигде не используется
   onSaveTask() {
     const review = { ...this.review };
 
