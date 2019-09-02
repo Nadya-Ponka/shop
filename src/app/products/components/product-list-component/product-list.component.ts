@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Item } from '../../../shared/models/item';
@@ -11,7 +11,8 @@ import { AuthService } from './../../../core';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+
+export class ProductListComponent implements OnInit {
   constructor(
     private router: Router,
     private productsService: ProductsService,
@@ -33,11 +34,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   onShowReviews(product: Item): void {
     this.router.navigate([{
       outlets: {
-        review: null
-      }
-    }]);
-    this.router.navigate([{
-      outlets: {
         review: ['product', product.id]
       }
     }]);
@@ -54,9 +50,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-   // this.items = this.productsService.getProducts();
    this.items = this.productsPromiseService.getProducts();
   }
 
-  ngAfterViewInit() {}
 }

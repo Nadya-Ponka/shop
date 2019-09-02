@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { Item } from '../../shared/models/item';
 
@@ -8,8 +8,9 @@ import { Item } from '../../shared/models/item';
   styleUrls: ['./cart-element.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CartElementComponent implements OnInit {
-  @Input() item: Item;
+
+export class CartElementComponent {
+  @Input() item: { elem: Item, count: number };
   @Output() increment: EventEmitter < Item > = new EventEmitter();
   @Output() decrement: EventEmitter < Item > = new EventEmitter();
   @Output() remove: EventEmitter < Item > = new EventEmitter();
@@ -28,11 +29,8 @@ export class CartElementComponent implements OnInit {
     this.decrement.emit(item);
   }
 
-  onEditTtem() {
+  onEditTtem(item: Item) {
     this.editItem.emit(this.item);
-  }
-
-  ngOnInit() {
   }
 
 }

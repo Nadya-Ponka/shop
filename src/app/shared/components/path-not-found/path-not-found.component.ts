@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -10,7 +10,7 @@ export class PathNotFoundComponent {
 
   constructor(private location: Location) {}
 
-  backCatalogue(): void {
+  backToCatalogue(): void {
     this.location.back();
   }
 

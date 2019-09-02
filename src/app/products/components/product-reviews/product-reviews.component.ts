@@ -4,7 +4,7 @@ import { ActivatedRoute, Router, ParamMap  } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 import { Item } from '../../../shared/models/item';
-import { ProductsService, ProductsPromiseService } from '../../services';
+import { ProductsPromiseService } from '../../services';
 
 @Component({
   templateUrl: './product-reviews.component.html',
@@ -15,7 +15,6 @@ export class ProductReviewsComponent implements OnInit {
   public review: Item;
 
   constructor(
-    private productsService: ProductsService,
     private productsPromiseService: ProductsPromiseService,
     private route: ActivatedRoute,
     private router: Router
@@ -41,7 +40,7 @@ export class ProductReviewsComponent implements OnInit {
       );
   }
 
-onGoBack(): void {
+  onGoBack(): void {
     this.router.navigate([{
       outlets: {
         review: null

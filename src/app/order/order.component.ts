@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 // rxjs
 import { Observable, Subscription } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 import { CartService } from './../cart/cart.service';
 import { Item } from '../shared/models/item';
-import { UserModel } from './models/order.model';
 import { OrderService } from './../order/order.service';
 
 @Component({
@@ -22,19 +21,17 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private router: Router,
-    private route: ActivatedRoute,
   ) { }
-
-  public totalPrice: number;
-  public totalCount: number;
-
+  
   arrayItems$: Observable < Array < { elem: Item, count: number } >> ;
-
-  private user: {};
-  private items;
+  
+  public items: { elem: Item, count: number }[];
+  public showThanks = false;
+  public totalCount: number;
+  public totalPrice: number;
+  public user: {};
 
   private sub: Subscription;
-  private showThanks = false;
 
   ngOnInit() {
     this.user = {

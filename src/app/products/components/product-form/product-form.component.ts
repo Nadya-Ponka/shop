@@ -16,9 +16,10 @@ import { ProductsPromiseService, ProductsObservableService } from '../../service
 })
 
 export class ProductFormComponent implements OnInit, OnDestroy {
-  private item: Item;
+  public item: Item;
+
   private sub: Subscription;
-  private allProducts;
+  private allProducts: Promise<Item[]>;
 
   constructor(
     private route: ActivatedRoute,

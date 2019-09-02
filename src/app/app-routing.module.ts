@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { OrderComponent } from './order/order.component';
 import { PathNotFoundComponent } from './shared/components/path-not-found/path-not-found.component';
 import { ProductReviewsComponent } from './products/components/product-reviews/product-reviews.component';

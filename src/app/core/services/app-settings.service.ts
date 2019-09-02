@@ -1,22 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 import { Item } from './../../shared/models/item';
+import { AppSettingsObject } from './../../shared/models/appSetting';
 import { appSettingsAPI } from './app-settings.config';
 
 import { LocalStorageService } from './local-storage.service';
-
-class AppSettingsObject {
-  constructor(
-    public id: string,
-    public title: string,
-    public name?: string
-  ) {}
-}
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +22,8 @@ export class AppSettingsService {
     title: 'Hello, World!',
     name: 'Default-Shop'
   };
-  private appSettings: appSettingsObject;
+  
+  private appSettings: AppSettingsObject;
   private sub: Subscription;
 
   constructor(
