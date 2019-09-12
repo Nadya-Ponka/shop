@@ -3,8 +3,19 @@ export enum State {
   available = 1
 }
 
-export class Item {
-  constructor(
+export interface Element {
+  id: number,
+  size: string[],
+  colors: string[],
+  image: string,
+  name: string,
+  price: number,
+  category: State,
+  reviews?: string[]
+}
+
+export class Item implements Element {
+	constructor(
     public id: number,
     public size: string[],
     public colors: string[],
@@ -14,6 +25,7 @@ export class Item {
     public category: State,
     public reviews?: string[]
   ) {
+		this.image = image || 'unknown';
     this.reviews = reviews || [];
   }
 }

@@ -3,8 +3,9 @@
     	<button class="btn btn-primary" (click)="onCreateProduct()">Add New Product</button>
 	</div>
 	<br><br>
+	<p *ngIf="(productsError$ | async) as value">{{value}}</p>
 
-	<app-product [item]="product" *ngFor="let product of items | async" (buyProduct)="onBuy($event)" 
+	<app-product [item]="product" *ngFor="let product of (products$ | async)" (buyProduct)="onBuy($event)" 
 	(showReviews)="onShowReviews($event)" (editProduct)="onEditProduct($event)"
 	[logged]="authService.isLoggedIn"
 	></app-product>

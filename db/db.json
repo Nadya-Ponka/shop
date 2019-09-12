@@ -1,7 +1,7 @@
 {
   "productsList": [
     {
-      "id": 0,
+      "id": 1,
       "size": [
         "s",
         "m",
@@ -14,7 +14,7 @@
       ],
       "image": "t-shirt",
       "name": "T-shirt",
-      "price": "7.99",
+      "price": "6.99",
       "category": 0,
       "reviews": [
         "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 2,
       "size": [
         "10Litry"
       ],
@@ -33,14 +33,14 @@
       ],
       "image": "backpack",
       "name": "backpack",
-      "price": 5.95,
+      "price": "7.95",
       "category": 0,
       "reviews": [
         "Magnifique petit caraco . Tres belle couleur, Rendu qualitatif et chic. Acheté en taille 32, j'ai dû neanmoins retoucher les bretelles qui étaient trop longues!"
       ]
     },
     {
-      "id": 2,
+      "id": 3,
       "size": [
         "M",
         "XL",
@@ -57,7 +57,7 @@
       "reviews": []
     },
     {
-      "id": 3,
+      "id": 4,
       "size": [
         "s",
         "m",
@@ -75,7 +75,7 @@
       "reviews": []
     },
     {
-      "id": 4,
+      "id": 5,
       "size": [
         "s",
         "m",
@@ -96,7 +96,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "size": [
         "s",
         "l"
@@ -112,7 +112,7 @@
       "reviews": []
     },
     {
-      "id": 6,
+      "id": 7,
       "size": [
         "s",
         "m",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "size": [
         "m",
         "l"
@@ -149,7 +149,7 @@
       "reviews": []
     },
     {
-      "id": 8,
+      "id": 9,
       "size": [
         "s",
         "m",
@@ -167,7 +167,7 @@
       "reviews": []
     },
     {
-      "id": 9,
+      "id": 10,
       "size": [
         "36",
         "37",
@@ -185,7 +185,7 @@
       "reviews": []
     },
     {
-      "id": 10,
+      "id": 11,
       "size": [
         "s",
         "m",
@@ -205,7 +205,7 @@
       ]
     },
     {
-      "id": 11,
+      "id": 12,
       "size": [
         "s",
         "m",
@@ -223,7 +223,7 @@
       "reviews": []
     },
     {
-      "id": 12,
+      "id": 13,
       "size": [
         "s",
         "m",
@@ -241,7 +241,7 @@
       "reviews": []
     },
     {
-      "id": 13,
+      "id": 14,
       "size": [
         "39",
         "40",
@@ -259,7 +259,7 @@
       "reviews": []
     },
     {
-      "id": 14,
+      "id": 15,
       "size": [
         "s",
         "m",
@@ -276,7 +276,7 @@
       "reviews": []
     },
     {
-      "id": 15,
+      "id": 16,
       "size": [
         "s",
         "m",
@@ -308,7 +308,7 @@
       ],
       "price": "17",
       "category": 0,
-      "id": 16,
+      "id": 17,
       "image": "unknown"
     },
     {
@@ -325,8 +325,66 @@
       ],
       "price": "19.99",
       "category": 0,
-      "id": 17,
+      "id": 18,
       "image": "unknown"
+    },
+    {
+      "id": 19,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "юбка",
+      "price": "99",
+      "category": 0,
+      "reviews": [
+        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
+        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
+      ]
+    },
+    {
+      "id": 20,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        "green",
+        "red",
+        "yellow"
+      ],
+      "image": "t-shirt",
+      "name": "T-shirt",
+      "price": "8.99",
+      "category": 0,
+      "reviews": [
+        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
+        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
+      ]
+    },
+    {
+      "id": 21,
+      "size": [
+        "s",
+        "m",
+        "l"
+      ],
+      "colors": [
+        ""
+      ],
+      "image": "unknown",
+      "name": "юбка",
+      "price": "11",
+      "category": 0,
+      "reviews": []
     }
   ]
 }

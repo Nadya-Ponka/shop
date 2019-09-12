@@ -115,6 +115,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "shop"
+    }
+  },
+  "defaultProject": "shop",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

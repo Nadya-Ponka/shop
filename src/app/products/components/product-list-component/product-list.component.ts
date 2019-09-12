@@ -1,11 +1,19 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Item } from '../../../shared/models/item';
-import { ProductsService, ProductsPromiseService } from '../../services';
-import { CartService } from '../../../cart/cart.service';
+// @Ngrx
+import { Store, select } from '@ngrx/store';
+import { AppState, selectProductsData, selectProductsError  } from './../../../core/@ngrx';
 
+// rxjs
+import { Observable } from 'rxjs';
+
+import { Item } from '../../../shared/models/item';
+import { ProductsService } from '../../services';
+import { CartService } from '../../../cart/cart.service';
 import { AuthService } from './../../../core';
+
+import * as ProductsActions from './../../../core/@ngrx/products/products.actions';
 
 @Component({
   templateUrl: './product-list.component.html',
@@ -16,15 +24,16 @@ export class ProductListComponent implements OnInit {
   constructor(
     private router: Router,
     private productsService: ProductsService,
-    private productsPromiseService: ProductsPromiseService,
     private cartService: CartService,
-    public authService: AuthService,
+		public authService: AuthService,
+		private store: Store<AppState>
   ) {}
 
   @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
 
-  items: Promise<Array<Item>>;
-
+	products$: Observable<ReadonlyArray<Item>>;
+	productsError$: Observable<Error | string>;
+	
   onBuy($event) {
     console.log('Product was bought: ', $event, this.cartService);
     this.buyProduct.emit($event);
@@ -32,6 +41,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onShowReviews(product: Item): void {
+		console.log('REVIEW: ', product);
     this.router.navigate([{
       outlets: {
         review: ['product', product.id]
@@ -50,7 +60,11 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.items = this.productsPromiseService.getProducts();
+/* 		this.productsState$ = this.store.pipe(select('products'));
+ */		// this.items = this.productsPromiseService.getProducts();
+		this.products$ = this.store.pipe(select(selectProductsData));
+		this.productsError$ = this.store.pipe(select(selectProductsError));
+		this.store.dispatch(ProductsActions.getProducts());
   }
 
 }

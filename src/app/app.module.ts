@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ProductsModule } from './products/products.module';
 import { CartModule } from './cart/cart.module';
 import { CoreModule } from './core/core.module';
+import { ProductsModule } from './products/products.module';
+import { RootStoreModule } from './core/@ngrx/root-store.module';
 import { SharedModule } from './shared/shared.module';
 import { OrderModule } from './order/orders.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { httpInterceptorProviders } from './core/interceptors';
  ProductsModule,
  SharedModule,
  SpinnerModule.forRoot(),
+ RootStoreModule,
  AppRoutingModule
  ],
  bootstrap: [AppComponent],
