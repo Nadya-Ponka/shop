@@ -1,8 +1,13 @@
 export class UserModel {
-  constructor(
-    public id: number,
-    public firstName: string,
-    public lastName: string,
-    public address: string
-  ) {}
+
+	constructor(
+			public firstName = '',
+			public lastName = '',
+			public email = '',
+			public sendProducts = false,
+			public addressType = 'home',
+			public street1?: string,
+			public country = '',
+			public city?: string,
+			public zip?: string) { }
 }
