@@ -26,11 +26,9 @@ export class OrderComponent implements OnInit {
 	countries: Array < string > = ['Ukraine', 'Armenia', 'Belarus', 'Hungary', 'Kazakhstan', 'Poland', 'Russia'];
 	placeholder = {
 		email: 'Email (required)',
-    phone: 'Phone'
+		phone: 'Phone',
+		confirmEmail: 'Confirm Email'
 	};
-
-	rMin = 1;
-	rMax = 4;
 
   // data model
   user: UserModel = new UserModel('Nadzeya',
@@ -43,7 +41,6 @@ export class OrderComponent implements OnInit {
 	userForm: FormGroup;
 	validationMessage: string;
 
-	private sub: Subscription;
 	private validationMessagesMap = {
     email: {
       required: 'Please enter your email address.',
@@ -77,19 +74,6 @@ export class OrderComponent implements OnInit {
     }
   }
 
-/* 	private watchValueChanges() {
-		this.sub = this.userForm.get('notification').valueChanges
-		.pipe(
-			debounceTime(1000)
-		)		
-		.subscribe(value => this.setNotification(value));
-		const emailControl = this.userForm.get('emailGroup.email');
-    const sub = emailControl.valueChanges.subscribe(value =>
-      this.setValidationMessage(emailControl, 'email')
-    );
-    this.sub.add(sub);
-	}
- */
   private buildForm() {
     this.userForm = this.fb.group({
 			// firstName: ['', [Validators.required, Validators.minLength(3)]],
@@ -105,19 +89,18 @@ export class OrderComponent implements OnInit {
           [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+'), Validators.email], 
 			// [CustomValidators.asyncEmailPromiseValidator]
         ],
-/*         confirmEmail: ['', Validators.required], 
- */      }/* , {validator: CustomValidators.emailMatcher} */),
-			phone: '',
-/* 			notification: 'email',
- */			// serviceLevel: ['', CustomValidators.serviceLevelRange(this.rMin, this.rMax)],
-			// serviceLevel: [''],
+        confirmEmail: ['', Validators.required], 
+      }, {validator: CustomValidators.emailMatcher}),
+			phones: this.fb.array([this.buildPhones()]),
 			sendProducts: true,
-
 			addresses: this.fb.array([this.buildAddress()])
 		});
   }
 	get addresses(): FormArray {
     return this.userForm.get('addresses') as FormArray;
+	}
+	get phones(): FormArray {
+    return this.userForm.get('phones') as FormArray;
 	}
 
   ngOnInit() {
@@ -126,19 +109,8 @@ export class OrderComponent implements OnInit {
     this.totalPrice = this.cartService.getTotalPrice();
 		this.totalCount = this.cartService.getTotalCount();
 		this.buildForm();
-/* 		this.watchValueChanges();
- */  }
-
-/*   onConfirm() {
-    this.showThanks = true;
-
-    const order = {
-      user: this.user,
-      order: this.items
-    };
-    this.orderService.saveOrder(order);
   }
- */
+
   onGoCart() {
     this.showThanks = false;
     const link = ['/cart'];
@@ -151,11 +123,6 @@ export class OrderComponent implements OnInit {
     this.router.navigate(link);
   }
 
-
-/* ngOnDestroy() {
-	this.sub.unsubscribe();
-}
- */
 onBlur() {
 	const emailControl = this.userForm.get('emailGroup.email');
 	this.setValidationMessage(emailControl, 'email');
@@ -163,6 +130,14 @@ onBlur() {
 
 onAddAddress(): void {
 	this.addresses.push(this.buildAddress());
+}
+
+onAddPhones(): void {
+	this.phones.push(this.buildPhones());
+}
+
+onDeletePhones(index): void {
+	this.phones.removeAt(index);
 }
 
 onSave() {
@@ -182,50 +157,6 @@ onSave() {
 
 }
 
-/* private setNotification(notifyVia: string) {
-	const controls = new Map();
-	controls.set('phoneControl', this.userForm.get('phone'));
-	controls.set('emailGroup', this.userForm.get('emailGroup'));
-	controls.set('emailControl', this.userForm.get('emailGroup.email'));
-	controls.set(
-		'confirmEmailControl',
-		this.userForm.get('emailGroup.confirmEmail')
-	);
-
-	if (notifyVia === 'text') {
-		const emailControl = controls.get('emailControl');
-		emailControl.setValidators([
-			Validators.required,
-			Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+'),
-			Validators.email
-		]);
-		emailControl.setAsyncValidators(CustomValidators.asyncEmailPromiseValidator);
-		controls.get('emailGroup').setValidators([CustomValidators.emailMatcher]);
-		controls.get('phoneControl').clearValidators();
-
-		this.placeholder = {
-			phone: 'Phone',
-			email: 'Email (required)',
-		};
-	controls.forEach(control => control.updateValueAndValidity());
-} 
-} */
-private setFormValues() {
-	this.userForm.setValue({
-		firstName: this.user.firstName,
-		lastName: this.user.lastName,
-		email: this.user.email,
-		sendProducts: this.user.sendProducts
-	});
-}
-
-private patchFormValues() {
-	this.userForm.patchValue({
-		firstName: this.user.firstName,
-		lastName: this.user.lastName
-	});
-}
-
 private buildAddress(): FormGroup {
 	return this.fb.group({
 		addressType: 'home',
@@ -234,6 +165,12 @@ private buildAddress(): FormGroup {
 		zip: '',
 		street1: '',
 		street2: ''
+	});
+}
+
+private buildPhones(): FormGroup {
+	return this.fb.group({
+		phone: '',
 	});
 }
 }
