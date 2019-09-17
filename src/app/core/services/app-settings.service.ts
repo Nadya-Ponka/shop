@@ -22,7 +22,7 @@ export class AppSettingsService {
     title: 'Hello, World!',
     name: 'Default-Shop'
   };
-  
+
   private appSettings: AppSettingsObject;
   private sub: Subscription;
 
@@ -58,7 +58,7 @@ export class AppSettingsService {
           },
           catchError(this.handleError)
         );
-    } 
+    }
     return this.appSettings;
   }
 

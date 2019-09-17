@@ -3,7 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { Element } from './../../../shared/models/item';
 
 export const getProducts = createAction(
-	'[Products] GET_PRODUCTS'
+ '[Products] GET_PRODUCTS'
 );
 
 export const getProductsSuccess = createAction(

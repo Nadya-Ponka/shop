@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 
 export class CustomValidators {
 
-	static emailMatcher(c: AbstractControl): { [key: string]: boolean } | null {
+  static emailMatcher(c: AbstractControl): {
+    [key: string]: boolean
+  } | null {
     const emailControl = c.get('email');
     const emailConfirmControl = c.get('confirmEmail');
 
@@ -17,28 +19,32 @@ export class CustomValidators {
       return null;
     }
 
-    return { 'emailMatch': true };
+    return {
+      'emailMatch': true
+    };
   }
 
-	static asyncEmailPromiseValidator(
-    c: AbstractControl
-  ):
-    | Promise<{ [key: string]: any } | null> | Observable<{ [key: string]: any } | null> {
-    const email = c.value;
+  static asyncEmailPromiseValidator(
+      c: AbstractControl
+    ):
+    |
+    Promise < {
+      [key: string]: any
+    } | null > | Observable < {
+      [key: string]: any
+    } | null > {
+      const email = c.value;
 
-    return new Promise(resolve => {
-      setTimeout(() => {
-        if (email === 'existsemail@example.com') {
-          resolve({
-            asyncEmailInvalid: true
-          });
-        } else {
-          resolve(null);
-        }
-      }, 2000);
-    });
-  } 
+      return new Promise(resolve => {
+        setTimeout(() => {
+          if (email === 'existsemail@example.com') {
+            resolve({
+              asyncEmailInvalid: true
+            });
+          } else {
+            resolve(null);
+          }
+        }, 2000);
+      });
+    }
 }
-
-
-

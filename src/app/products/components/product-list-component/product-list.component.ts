@@ -25,15 +25,15 @@ export class ProductListComponent implements OnInit {
     private router: Router,
     private productsService: ProductsService,
     private cartService: CartService,
-		public authService: AuthService,
-		private store: Store<AppState>
+    public authService: AuthService,
+    private store: Store < AppState >
   ) {}
 
   @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
 
-	products$: Observable<ReadonlyArray<Item>>;
-	productsError$: Observable<Error | string>;
-	
+  products$: Observable < ReadonlyArray < Item >> ;
+  productsError$: Observable < Error | string > ;
+
   onBuy($event) {
     console.log('Product was bought: ', $event, this.cartService);
     this.buyProduct.emit($event);
@@ -41,7 +41,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onShowReviews(product: Item): void {
-		console.log('REVIEW: ', product);
+    console.log('REVIEW: ', product);
     this.router.navigate([{
       outlets: {
         review: ['product', product.id]
@@ -60,11 +60,10 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-/* 		this.productsState$ = this.store.pipe(select('products'));
- */		// this.items = this.productsPromiseService.getProducts();
-		this.products$ = this.store.pipe(select(selectProductsData));
-		this.productsError$ = this.store.pipe(select(selectProductsError));
-		this.store.dispatch(ProductsActions.getProducts());
+    // this.items = this.productsPromiseService.getProducts();
+    this.products$ = this.store.pipe(select(selectProductsData));
+    this.productsError$ = this.store.pipe(select(selectProductsError));
+    this.store.dispatch(ProductsActions.getProducts());
   }
 
 }

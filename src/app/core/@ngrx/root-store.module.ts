@@ -16,29 +16,29 @@ import { metaReducers } from './meta-reducers';
 @NgModule({
   declarations: [],
   imports: [
-		CommonModule,
-		StoreModule.forRoot(routerReducers, {
-			metaReducers,
-			runtimeChecks: {
-			 strictStateImmutability: true,
-			 strictActionImmutability: true,
-			 // router state is not serializable
-       // set false if you don't use CustomSerializer
-			 strictStateSerializability: true,
-			 // router action is not serializable
-       // set false
-			 strictActionSerializability: false
-		 }
-	 }),
-		EffectsModule.forRoot([]),
-		StoreRouterConnectingModule.forRoot({
-			stateKey: 'router',
-			routerState: RouterState.Minimal
-			// serializer: CustomSerializer // has a priority over routerState
-			}),
-    // Instrumentation must be imported after importing StoreModule (config is optional) 
-		!environment.production ? StoreDevtoolsModule.instrument() : [],
-		ProductsStoreModule
+    CommonModule,
+    StoreModule.forRoot(routerReducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        // router state is not serializable
+        // set false if you don't use CustomSerializer
+        strictStateSerializability: true,
+        // router action is not serializable
+        // set false
+        strictActionSerializability: false
+      }
+    }),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+      routerState: RouterState.Minimal
+      // serializer: CustomSerializer // has a priority over routerState
+    }),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    ProductsStoreModule
   ]
 })
-export class RootStoreModule { }
+export class RootStoreModule {}

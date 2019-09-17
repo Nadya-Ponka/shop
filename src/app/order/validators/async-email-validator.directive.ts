@@ -11,7 +11,7 @@ import { CustomValidators } from './custom.validators';
   providers: [
     {
       provide: NG_ASYNC_VALIDATORS,
-      useExisting: AsyncEmailValidatorDirective, 
+      useExisting: AsyncEmailValidatorDirective,
       multi: true
     }
   ]

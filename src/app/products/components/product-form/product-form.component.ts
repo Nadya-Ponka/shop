@@ -1,8 +1,4 @@
-import {
-  Component,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -16,7 +12,7 @@ import { AppState, selectSelectedProduct, ProductsState, selectProductsState } f
 import * as ProductsActions from './../../../core/@ngrx/products/products.actions';
 
 import { Item, Element } from './../../../shared/models/item';
-import { /* ProductsPromiseService,  */ProductsObservableService } from '../../services';
+import { ProductsObservableService } from '../../services';
 
 @Component({
   selector: 'app-product-form',
@@ -26,32 +22,23 @@ import { /* ProductsPromiseService,  */ProductsObservableService } from '../../s
 @AutoUnsubscribe()
 export class ProductFormComponent implements OnInit, OnDestroy {
   public item: Item;
-	productsState$: Observable<ProductsState>;
+  productsState$: Observable < ProductsState > ;
   private sub: Subscription;
   private allProducts: Promise < Item[] > ;
 
   constructor(
     private route: ActivatedRoute,
-/*     private productsPromiseService: ProductsPromiseService,
- */    private productsObservableService: ProductsObservableService,
+    private productsObservableService: ProductsObservableService,
     private location: Location,
     private store: Store < AppState >
   ) {}
 
   ngOnInit() {
-		/* this.sub = this.store.pipe(select(selectSelectedProduct))
-     .subscribe(product => {
-      if (product) {
-        this.item = {...product} as Item;
-      } else {
-        this.item = new Item(null, [], [], '', '', 0, 0, []);
-      }
-    }); */
-		this.productsState$ = this.store.pipe(select(selectProductsState));
+    this.productsState$ = this.store.pipe(select(selectProductsState));
     this.sub = this.productsState$.subscribe(productsState => {
-			console.log('productsState++++++: ', productsState);
+      console.log('productsState++++++: ', productsState);
       if (productsState.selectedProduct) {
-        this.item = {...productsState.selectedProduct} as Item;
+        this.item = { ...productsState.selectedProduct } as Item;
       } else {
         this.item = new Item(null, [], [], '', '', 0, 0, []);
       }
@@ -60,7 +47,9 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('productID');
       if (id) {
-        this.store.dispatch(ProductsActions.getProduct({ productID: +id }));
+        this.store.dispatch(ProductsActions.getProduct({
+          productID: +id
+        }));
       }
     });
   }
@@ -74,13 +63,17 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   onSaveItem() {
     const product = { ...this.item } as Item;
 
-		if (product.id) {
-      this.store.dispatch(ProductsActions.updateProduct({ product }));
-		} else {
-			product.size = typeof product.size === 'string' ? product.size.split(',') : product.size;
-			product.colors = typeof product.colors === 'string' ? product.colors.split(',') : product.colors;
-			this.store.dispatch(ProductsActions.createProduct({ product }));
-		}
+    if (product.id) {
+      this.store.dispatch(ProductsActions.updateProduct({
+        product
+      }));
+    } else {
+      product.size = typeof product.size === 'string' ? product.size.split(',') : product.size;
+      product.colors = typeof product.colors === 'string' ? product.colors.split(',') : product.colors;
+      this.store.dispatch(ProductsActions.createProduct({
+        product
+      }));
+    }
   }
 
   onGoBack() {

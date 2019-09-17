@@ -12,7 +12,7 @@ export class ProductsPromiseService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Promise<Item[]> {
+  getProducts(): Promise < Item[] > {
     return this.http
       .get(this.productsListUrl)
       .toPromise()
@@ -20,41 +20,45 @@ export class ProductsPromiseService {
       .catch(this.handleError);
   }
 
-  getProduct(id: number): Promise<Item> {
+  getProduct(id: number): Promise < Item > {
     const url = `${this.productsListUrl}/${id}`;
 
     return this.http
       .get(url)
       .toPromise()
       .then(response => {
-				console.log('RESPONSE: ', response);
-				return response as Item
-			})
+        console.log('RESPONSE: ', response);
+        return response as Item;
+      })
       .catch(this.handleError);
-	}
+  }
 
-	updateProduct(product: Item): Promise<Item> {
+  updateProduct(product: Item): Promise < Item > {
     const url = `${this.productsListUrl}/${product.id}`;
     const body = JSON.stringify(product);
     const options = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     };
 
     return this.http
       .put(url, body, options)
       .toPromise()
       .then(response => {
-				console.log('updatedProduct: ', response);
-				return response as Item;
-			})
+        console.log('updatedProduct: ', response);
+        return response as Item;
+      })
       .catch(this.handleError);
-	}
-	
-	createProduct(product: Item): Promise<Item> {
+  }
+
+  createProduct(product: Item): Promise < Item > {
     const url = this.productsListUrl;
     const body = JSON.stringify(product);
     const options = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
     };
 
     return this.http
@@ -62,9 +66,9 @@ export class ProductsPromiseService {
       .toPromise()
       .then(response => response as Item)
       .catch(this.handleError);
-	}
-	
-  private handleError(error: any): Promise<any> {
+  }
+
+  private handleError(error: any): Promise < any > {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }

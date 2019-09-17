@@ -5,4 +5,3 @@ export class AppSettingsObject {
       public name?: string
     ) {}
   }
-  

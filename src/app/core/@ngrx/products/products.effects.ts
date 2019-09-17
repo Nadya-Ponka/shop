@@ -16,77 +16,97 @@ import { Element, Item } from './../../../shared/models/item';
 export class ProductsEffects {
 
   constructor(
-		private actions$: Actions,
-		private productsPromiseService: ProductsPromiseService,
-		private router: Router
-		) {
-		console.log('[PRODUCTS EFFECTS]');
-	}
+    private actions$: Actions,
+    private productsPromiseService: ProductsPromiseService,
+    private router: Router
+  ) {
+    console.log('[PRODUCTS EFFECTS]');
+  }
 
-	getProducts$: Observable<Action> = createEffect(() =>
+  getProducts$: Observable < Action > = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.getProducts),
       switchMap(action =>
         this.productsPromiseService
-          .getProducts()
-          .then(products => ProductsActions.getProductsSuccess({ products }))
-          .catch(error => ProductsActions.getProductsError({ error }))
+        .getProducts()
+        .then(products => ProductsActions.getProductsSuccess({
+          products
+        }))
+        .catch(error => ProductsActions.getProductsError({
+          error
+        }))
       )
     )
-	);
+  );
 
-	getProduct$: Observable<Action> = createEffect(() =>
+  getProduct$: Observable < Action > = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.getProduct, ProductsActions.showReview),
       pluck('productID'),
       switchMap(productID =>
         this.productsPromiseService.getProduct(productID)
-          .then(product => ProductsActions.getProductSuccess({ product }))
-          .catch(error => ProductsActions.getProductError({ error }))
+        .then(product => ProductsActions.getProductSuccess({
+          product
+        }))
+        .catch(error => ProductsActions.getProductError({
+          error
+        }))
       )
     )
   );
 
-	updateProduct$: Observable<Action> = createEffect(() =>
-	this.actions$.pipe(
-		ofType(ProductsActions.updateProduct),
-		pluck('product'),
-		concatMap((product: Item) =>
-			this.productsPromiseService.updateProduct(product)
-				.then((updatedProduct: Element) => {
-					console.log('updatedProduct: ', updatedProduct);
-					this.router.navigate(['/home']);
-					return ProductsActions.updateProductSuccess({ product: updatedProduct });
-				})
-				.catch(error => ProductsActions.updateProductError({ error }))
-		)
-	)
-);
+  updateProduct$: Observable < Action > = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductsActions.updateProduct),
+      pluck('product'),
+      concatMap((product: Item) =>
+        this.productsPromiseService.updateProduct(product)
+        .then((updatedProduct: Element) => {
+          console.log('updatedProduct: ', updatedProduct);
+          this.router.navigate(['/home']);
+          return ProductsActions.updateProductSuccess({
+            product: updatedProduct
+          });
+        })
+        .catch(error => ProductsActions.updateProductError({
+          error
+        }))
+      )
+    )
+  );
 
-createProduct$: Observable<Action> = createEffect(() =>
+  createProduct$: Observable < Action > = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.createProduct),
       pluck('product'),
       concatMap((product: Item) =>
         this.productsPromiseService
-          .createProduct(product)
-          .then((createdProduct: Element) => {
-            this.router.navigate(['/home']);
-            return ProductsActions.createProductSuccess({ product: createdProduct });
-          })
-          .catch(error => ProductsActions.createProductError({ error }))
+        .createProduct(product)
+        .then((createdProduct: Element) => {
+          this.router.navigate(['/home']);
+          return ProductsActions.createProductSuccess({
+            product: createdProduct
+          });
+        })
+        .catch(error => ProductsActions.createProductError({
+          error
+        }))
       )
     )
   );
 
-	showReview$: Observable<Action> = createEffect(() =>
+  showReview$: Observable < Action > = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductsActions.showReview),
       pluck('productID'),
       switchMap(productID =>
         this.productsPromiseService.getProduct(productID)
-					.then(product => ProductsActions.showReviewSuccess({ product }))
-          .catch(error => ProductsActions.showReviewError({ error }))
+        .then(product => ProductsActions.showReviewSuccess({
+          product
+        }))
+        .catch(error => ProductsActions.showReviewError({
+          error
+        }))
       )
     )
   );
