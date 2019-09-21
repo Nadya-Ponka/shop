@@ -11,6 +11,6 @@ const dirs = [HighlightDirective, BorderDirective];
 @NgModule({
  declarations: [...dirs, OrderByPipe, PathNotFoundComponent],
  imports: [CommonModule],
- exports: [...dirs, PathNotFoundComponent]
+ exports: [...dirs, OrderByPipe, PathNotFoundComponent]
 })
 export class SharedModule {}

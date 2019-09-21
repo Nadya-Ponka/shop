@@ -1,7 +1,17 @@
 <div *ngIf="totalCount > 0; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>
-  <h4 style="display:inline-block;">Congratulations! You will become the owner of {{ totalCount }} beautiful products!
-  </h4>
+	<h4 style="display:inline-block;">Congratulations! You will become the owner of {{ totalCount }} beautiful products!</h4>
+	<div style="margin: 5px 5% 20px 5%;font-weight: 700;">
+			<select class="browser-default custom-select" (click)="printField($event, arrayItems$)">
+				<option disabled selected>Sort Items by</option>
+				<option [value]="key" *ngFor="let key of keys">{{ key | titlecase }}</option>
+			</select>
+			<select class="browser-default custom-select" (click)="printFlag($event, arrayItems$)">
+				<option disabled selected>Choose order</option>
+				<option>Descending</option>
+				<option>Ascending</option>
+			</select>
+	</div>
   <table class="middle">
     <thead>
       <tr>

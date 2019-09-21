@@ -7,18 +7,20 @@ import { switchMap } from 'rxjs/operators';
 
 import { CartService } from './../cart.service';
 import { Item } from '../../shared/models/item';
+import { OrderByPipe } from './../../shared/pipes/order-by.pipe';
 
 @Component({
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css'],
-  providers: []
+  providers: [OrderByPipe]
 })
 
 export class CartListComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private router: Router,
-    private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private orderByPipe: OrderByPipe
   ) {}
 
   public totalPrice: number;
@@ -29,7 +31,11 @@ export class CartListComponent implements OnInit {
   private editedUnit: { elem: Item, count: number };
 
   private sub: Subscription;
-
+	private date = Date.now();
+  private keys: string[] = ['name', 'price', 'count'];
+  private flag = true;
+	private field = '';
+	
   removeItem(item: { elem: Item, count: number } ) {
     this.cartService.removeItem(item);
     this.getInfo();
@@ -58,14 +64,26 @@ export class CartListComponent implements OnInit {
     // or
     // const link = ['edit', user.id];
     // this.router.navigate(link, {relativeTo: this.route});
+	}
+	
+	printField(event: any, array) {
+    this.field = event.target.value;
+    this.arrayItems$ = this.orderByPipe.transform(array, this.field, this.flag);
   }
 
+  printFlag(event: any, array) {
+    this.flag = event.target.value === 'Ascending' ? false : true;
+    this.arrayItems$ = this.orderByPipe.transform(array, this.field, this.flag);
+	}
+	
   private getInfo() {
     this.totalCount = this.cartService.getTotalCount();
     this.totalPrice = this.cartService.getTotalPrice();
   }
 
   ngOnInit() {
+/* 		this.arrayItems = this.orderByPipe.transform(data, this.field, this.flag);
+ */
     this.arrayItems$ = this.cartService.getUnits();
     this.getInfo();
 

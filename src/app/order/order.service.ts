@@ -11,9 +11,7 @@ export class OrderService {
   public orders = [];
 
   private orderID = 0;
-  private element: {
-    value: string
-  };
+  private element: { value: string };
 
   saveOrder(order) {
     console.log('Get new order: ', order);
@@ -33,7 +31,7 @@ export class OrderService {
   getOrders(key: string) {
     try {
       this.element = JSON.parse(localStorage.getItem(key));
-      console.log('Получен элемент из LocalStorage: ', this.element);
+      console.log('Получен элемент из LocalStorage: ', this.element, typeof this.element);
       return this.element;
     } catch (e) {
       console.error('Error getting data from localStorage', e);

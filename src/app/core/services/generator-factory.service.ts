@@ -1,10 +1,6 @@
-import {
-  InjectionToken
-} from '@angular/core';
+import { InjectionToken } from '@angular/core';
 
-import {
-  GeneratorService
-} from './generator.service';
+import { GeneratorService } from './generator.service';
 
 export const DataStringRandome = new InjectionToken < any[] > ('DataStringRandome');
 

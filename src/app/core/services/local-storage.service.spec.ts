@@ -1,12 +1,13 @@
-import { TestBed } from '@angular/core/testing';
-
 import { LocalStorageService } from './local-storage.service';
 
-describe('LocalStorageService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('LocalStorageService without the TestBed', () => {
+  let service: LocalStorageService;
 
-  it('should be created', () => {
-    const service: LocalStorageService = TestBed.get(LocalStorageService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    service = new LocalStorageService();
+  });
+
+  it('LocalStorageService.getItem should return real value', () => {
+    expect(service.getItemFromLocalstorage('AppSettings')).toEqual(JSON.parse(localStorage.getItem('AppSettings')));
   });
 });

@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+/* import { TestBed } from '@angular/core/testing';
 
 import { ConfigOptionsService } from './config-options.service';
 
@@ -9,4 +9,4 @@ describe('ConfigOptionsService', () => {
     const service: ConfigOptionsService = TestBed.get(ConfigOptionsService);
     expect(service).toBeTruthy();
   });
-});
+}); */

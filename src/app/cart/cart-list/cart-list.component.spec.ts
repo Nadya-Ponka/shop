@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartListComponent } from './cart-list.component';
 
@@ -22,4 +22,4 @@ describe('CartListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+}); */

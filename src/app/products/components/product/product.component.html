@@ -1,7 +1,7 @@
 <table class="shop-item">
 		<tr>
 			<td>
-				<div *ngIf="item.size.length > 1; then thenBlock else elseBlock"></div>
+				<div *ngIf="item && item.size && item.size.length > 1; then thenBlock else elseBlock"></div>
 				<ng-template #thenBlock>
 					<form>
 						<select onclick="event.stopPropagation()">
@@ -11,21 +11,21 @@
 					</form>
 				</ng-template>
 				<ng-template #elseBlock>
-					<span>{{item.size[0]}}</span>
+					<span></span>
 				</ng-template>
 			</td>
-			<td class="right">
+			<td *ngIf="item && item.colors && item.colors.length > 1" class="right">
 				<span *ngFor="let col of item.colors" class="color" [ngStyle]="{ 'background-color': col }"></span>
 			</td>
 		</tr>
 		<tr class="center">
-			<td colspan="2"><img src="../../assets/images/products/{{ item.image }}.png" /></td>
+			<td *ngIf="item && item.image" colspan="2"><img src="../../assets/images/products/{{ item.image }}.png" /></td>
 		</tr>
 		<tr>
-			<td class="product-name">{{ item.name | uppercase }}</td>
-			<td class="right">{{ item.price | currency:'EUR'}}</td>
+			<td *ngIf="item && item.name" class="product-name">{{ item.name | uppercase }}</td>
+			<td *ngIf="item && item.price" class="right">{{ item.price | currency:'EUR'}}</td>
 		</tr>
-		<button class="btn btn-primary" (click)='onBuy(item)' [disabled]="item.category" style="margin: 0 10px 10px;">BUY</button>
-		<button class="btn btn-secondary" [routerLink]="[{outlets: {review: ['review']}}]" (click)="onShowReviews()" style="margin: 0 10px 10px;">REVIEWS</button>
-		<button class="btn btn-primary" (click)="onEditProduct()" *ngIf="logged" style="margin: 0 10px 10px;">Edit</button>
+		<button class="btn btn-primary" (click)='onBuy(item)' [disabled]="item && item.category" style="margin: 0 10px 10px;">BUY</button>
+<!-- 		<button class="btn btn-secondary" (click)="onShowReviews()" [routerLink]="[{outlets: {review: ['review']}}]" style="margin: 0 10px 10px;">REVIEWS</button>
+ -->		<button class="btn btn-primary" (click)="onEditProduct()" *ngIf="logged" style="margin: 0 10px 10px;">Edit</button>
 	</table>

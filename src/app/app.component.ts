@@ -1,5 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component,  OnInit } from '@angular/core';
 
 import { SpinnerService } from './widgets';
 import { AppSettingsService } from './core/services/app-settings.service';
@@ -12,7 +11,6 @@ import { AppSettingsService } from './core/services/app-settings.service';
 export class AppComponent implements OnInit {
 
   constructor(
-    private router: Router,
     public spinnerService: SpinnerService,
     private appSettingsService: AppSettingsService
 ) { }

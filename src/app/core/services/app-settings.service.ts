@@ -23,7 +23,7 @@ export class AppSettingsService {
     name: 'Default-Shop'
   };
 
-  private appSettings: AppSettingsObject;
+  public appSettings: AppSettingsObject;
   private sub: Subscription;
 
   constructor(
@@ -33,7 +33,7 @@ export class AppSettingsService {
   ) {}
 
   loadFromLocalstorage() {
-    this.appSettings = this.localStorageService.getItem('AppSettings');
+    this.appSettings = this.localStorageService.getItemFromLocalstorage('AppSettings');
 
     if (!this.appSettings) {
       this.sub = this.getSettings()

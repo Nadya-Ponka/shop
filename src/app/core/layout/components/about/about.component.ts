@@ -50,7 +50,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this.localStorageService.setItem('LocalstorageService', this.userObject);
-    this.localStorageService.getItem('LocalStorageService');
+    this.localStorageService.getItemFromLocalstorage('LocalStorageService');
     this.localStorageService.removeItem('LocalStorageService');
     console.log('ConstantService returns constant: ', this.constFromService.getConstant());
     this.randomeString = this.dataStringRandome;

@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 
 export class LocalStorageService {
 
   constructor() {}
-  private element;
+  public element;
 
   setItem(key: string, value: object) {
     try {
@@ -18,7 +16,7 @@ export class LocalStorageService {
     }
   }
 
-  getItem(key: string) {
+  getItemFromLocalstorage(key: string) {
     try {
       this.element = JSON.parse(localStorage.getItem(key));
       console.log('Получен элемент из LocalStorage: ', this.element);
