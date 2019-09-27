@@ -9,10 +9,12 @@ import { Item } from '../../../shared/models/item';
 })
 
 export class ProductComponent implements OnInit {
-
   constructor() {}
 
-  @Input() item: Item;
+	@Input() item: Item;
+	@Input() size: [];
+	@Input() colors: [];
+
   @Input() logged: boolean;
 
   @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
@@ -24,7 +26,8 @@ export class ProductComponent implements OnInit {
     this.buyProduct.emit(item);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+	}
 
   onShowReviews() {
     console.log('Item for Review From Product Component: ', this.item);

@@ -5,8 +5,8 @@ export enum State {
 
 export interface Element {
   id: number,
-  size: string[],
-  colors: string[],
+  size: string,
+  colors: string,
   image: string,
   name: string,
   price: number,
@@ -17,8 +17,8 @@ export interface Element {
 export class Item implements Element {
 	constructor(
     public id: number,
-    public size: string[],
-    public colors: string[],
+    public size: string,
+    public colors: string,
     public image: string,
     public name: string,
     public price: number,

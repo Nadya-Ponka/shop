@@ -2,16 +2,8 @@
   "productsList": [
     {
       "id": 1,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
+      "size": "s,m,l",
+      "colors": "green,red,blue",
       "image": "t-shirt",
       "name": "T-shirt",
       "price": "6.99",
@@ -23,14 +15,8 @@
     },
     {
       "id": 2,
-      "size": [
-        "10Litry"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
+      "size": "10Litry",
+      "colors": "green,red,blue",
       "image": "backpack",
       "name": "backpack",
       "price": "7.95",
@@ -41,15 +27,8 @@
     },
     {
       "id": 3,
-      "size": [
-        "M",
-        "XL",
-        "XXL"
-      ],
-      "colors": [
-        "grey",
-        "blue"
-      ],
+      "size": "M,XL,XXL",
+      "colors": "grey,blue",
       "image": "t-shirt-1",
       "name": "T-shirt",
       "price": "19.99",
@@ -58,16 +37,8 @@
     },
     {
       "id": 4,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "turquois",
-        "red",
-        "yellow"
-      ],
+      "size": "s,m,l",
+      "colors": "turquois,red,yellow",
       "image": "jacket",
       "name": "jacket",
       "price": 51,
@@ -76,16 +47,8 @@
     },
     {
       "id": 5,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
+      "size": "s,m,l",
+      "colors": "green,red,yellow",
       "image": "pants",
       "name": "pants",
       "price": 12,
@@ -97,14 +60,8 @@
     },
     {
       "id": 6,
-      "size": [
-        "s",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "yellow"
-      ],
+      "size": "s,l",
+      "colors": "green,yellow",
       "image": "t-shirt",
       "name": "T-shirt",
       "price": 9.5,
@@ -113,16 +70,8 @@
     },
     {
       "id": 7,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "pink"
-      ],
+      "size": "s,m,l",
+      "colors": "green,red,pink",
       "image": "t-shirt",
       "name": "T-shirt",
       "price": 5,
@@ -134,256 +83,12 @@
     },
     {
       "id": 8,
-      "size": [
-        "m",
-        "l"
-      ],
-      "colors": [
-        "violet",
-        "pink"
-      ],
-      "image": "t-shirt",
-      "name": "T-shirt",
-      "price": 7.65,
-      "category": 0,
-      "reviews": []
-    },
-    {
-      "id": 9,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "pants",
-      "name": "pants",
-      "price": 6,
-      "category": 0,
-      "reviews": []
-    },
-    {
-      "id": 10,
-      "size": [
-        "36",
-        "37",
-        "38",
-        "39"
-      ],
-      "colors": [
-        "black",
-        "red"
-      ],
-      "image": "trekking-shoes",
-      "name": "trekking-shoes",
-      "price": 75,
-      "category": 1,
-      "reviews": []
-    },
-    {
-      "id": 11,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "pants",
-      "name": "pants",
-      "price": 8,
-      "category": 0,
-      "reviews": [
-        "Magnifique petit caraco . Tres belle couleur, Rendu qualitatif et chic. Acheté en taille 32, j'ai dû neanmoins retoucher les bretelles qui étaient trop longues!"
-      ]
-    },
-    {
-      "id": 12,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "pants",
-      "name": "skirt",
-      "price": 5,
-      "category": 0,
-      "reviews": []
-    },
-    {
-      "id": 13,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "t-shirt",
-      "name": "T-shirt",
-      "price": 5,
-      "category": 0,
-      "reviews": []
-    },
-    {
-      "id": 14,
-      "size": [
-        "39",
-        "40",
-        "41",
-        "42"
-      ],
-      "colors": [
-        "grey",
-        "brown"
-      ],
-      "image": "trekking-shoes",
-      "name": "trekking-shoes",
-      "price": 80,
-      "category": 1,
-      "reviews": []
-    },
-    {
-      "id": 15,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "yellow"
-      ],
-      "image": "t-shirt",
-      "name": "T-shirt",
-      "price": 19.99,
-      "category": 1,
-      "reviews": []
-    },
-    {
-      "id": 16,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "t-shirt",
-      "name": "T-shirt",
-      "price": "5.99",
-      "category": 0,
-      "reviews": [
-        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
-        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
-      ]
-    },
-    {
-      "name": "Skirt",
-      "size": [
-        "s",
-        "l"
-      ],
-      "colors": [
-        "beige",
-        "red"
-      ],
-      "price": "17",
-      "category": 0,
-      "id": 17,
-      "image": "unknown"
-    },
-    {
-      "name": "Skirt",
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "price": "19.99",
-      "category": 0,
-      "id": 18,
-      "image": "unknown"
-    },
-    {
-      "id": 19,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "t-shirt",
-      "name": "юбка",
-      "price": "99",
-      "category": 0,
-      "reviews": [
-        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
-        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
-      ]
-    },
-    {
-      "id": 20,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        "green",
-        "red",
-        "yellow"
-      ],
-      "image": "t-shirt",
-      "name": "T-shirt",
-      "price": "8.99",
-      "category": 0,
-      "reviews": [
-        "Trop grand. Je fais 1m68 pour 63kg et du F en bonnet de soutien gorge. Les bretelles trop longues !! Je ne rentre pas dans du 36 habituellement, pour les filles un conseil, prenait la 1 voir 2 tailles en dessous. Je l es renvoyer. Sur moi il rendait large pas aimé du tout.",
-        "La qualité du tissus est amazing ! Doux et précieux , la dentelle est aussi très jolie, les bretelles du haut ne sont pas super longues ( comme dans les autres débardeurs de ce types) donc on ne verra pas vos seins ( ouf )."
-      ]
-    },
-    {
-      "id": 21,
-      "size": [
-        "s",
-        "m",
-        "l"
-      ],
-      "colors": [
-        ""
-      ],
+      "size": "s,m,l",
+      "colors": "green,red,green",
       "image": "unknown",
       "name": "юбка",
       "price": "11",
-      "category": 0,
+      "category": 1,
       "reviews": []
     }
   ]
