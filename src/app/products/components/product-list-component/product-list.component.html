@@ -7,6 +7,6 @@
 
 	<app-product [item]="product" *ngFor="let product of (products$ | async)" (buyProduct)="onBuy($event)" 
 	(showReviews)="onShowReviews($event)" (editProduct)="onEditProduct($event)"
-	[logged]="authService.isLoggedIn"
+	[logged]="authService.isLoggedIn" [colors]="product.colors.split(',')" [size]="product.size.split(',')"
 	></app-product>
 </div>

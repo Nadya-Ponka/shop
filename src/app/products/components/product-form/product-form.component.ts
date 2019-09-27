@@ -40,7 +40,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
       if (productsState.selectedProduct) {
         this.item = { ...productsState.selectedProduct } as Item;
       } else {
-        this.item = new Item(null, [], [], '', '', 0, 0, []);
+        this.item = new Item(null, '', '', '', '', 0, 0, []);
       }
     });
 
@@ -68,8 +68,8 @@ export class ProductFormComponent implements OnInit, OnDestroy {
         product
       }));
     } else {
-      product.size = typeof product.size === 'string' ? product.size.split(',') : product.size;
-      product.colors = typeof product.colors === 'string' ? product.colors.split(',') : product.colors;
+      product.size = product.size;
+      product.colors = product.colors;
       this.store.dispatch(ProductsActions.createProduct({
         product
       }));

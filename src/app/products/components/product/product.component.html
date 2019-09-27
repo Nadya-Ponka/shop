@@ -1,12 +1,12 @@
 <table class="shop-item">
 		<tr>
 			<td>
-				<div *ngIf="item.size.length > 1; then thenBlock else elseBlock"></div>
+				<div *ngIf="size.length >= 1; then thenBlock else elseBlock"></div>
 				<ng-template #thenBlock>
 					<form>
 						<select onclick="event.stopPropagation()">
 							<option [value]="null" disabled selected>Size</option>
-							<option [value]="sizeVariable" *ngFor="let sizeVariable of item.size">{{ sizeVariable }}</option>
+							<option [value]="sizeVariable" *ngFor="let sizeVariable of size">{{ sizeVariable }}</option>
 						</select>
 					</form>
 				</ng-template>
@@ -15,7 +15,7 @@
 				</ng-template>
 			</td>
 			<td class="right">
-				<span *ngFor="let col of item.colors" class="color" [ngStyle]="{ 'background-color': col }"></span>
+				<span *ngFor="let col of colors" class="color" [ngStyle]="{ 'background-color': col }"></span>
 			</td>
 		</tr>
 		<tr class="center">

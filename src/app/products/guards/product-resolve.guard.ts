@@ -25,7 +25,7 @@ export class ProductResolveGuard implements Resolve<Item> {
     console.log('ProductResolve Guard is called');
 
     if (!route.paramMap.has('productID')) {
-      return of(new Item(Math.random() * 1000, [], [], '', '', 0, 0));
+      return of(new Item(Math.random() * 1000, '', '', '', '', 0, 0));
     }
     this.spinner.show();
     const id = +route.paramMap.get('productID');
