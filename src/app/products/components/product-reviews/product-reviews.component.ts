@@ -28,14 +28,14 @@ export class ProductReviewsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.review = new Item(null, [], [], '', '', 0, 0, []);
+    this.review = new Item(null, '', '', '', '', 0, 0, []);
 
     this.productsState$ = this.store.pipe(select(selectProductsState));
     this.sub = this.productsState$.subscribe(productsState => {
       if (productsState.selectedProduct) {
         this.review = { ...productsState.selectedProduct } as Item;
       } else {
-        this.review = new Item(null, [], [], '', '', 0, 0, []);
+        this.review = new Item(null, '', '', '', '', 0, 0, []);
       }
     });
 

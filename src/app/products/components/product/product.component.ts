@@ -14,7 +14,9 @@ export class ProductComponent implements OnInit {
 
   @Input() item: Item;
   @Input() logged: boolean;
-
+	@Input() size: [];
+	@Input() colors: [];
+	
   @Output() buyProduct: EventEmitter < Item > = new EventEmitter();
   @Output() showReviews = new EventEmitter < Item > ();
   @Output() editProduct = new EventEmitter < Item > ();

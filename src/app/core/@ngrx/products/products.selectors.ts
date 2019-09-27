@@ -17,6 +17,6 @@ export const selectSelectedProductByUrl = createSelector(
     if (productID && Array.isArray(products)) {
       return products.find(product => product.id === +productID);
     } else {
-      return new Item(null, [], [], '', '', 0, 0, []);
+      return new Item(null, '', '', '', '', 0, 0, []);
     }
   });
